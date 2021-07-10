@@ -1,7 +1,6 @@
 body {
   background-color: lightblue;
-
-  h1 {
-    color: orange;
-  }
+}
+body h1 {
+  color: orange;
 }
