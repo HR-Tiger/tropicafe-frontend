@@ -6,6 +6,12 @@ import {
   Link
 } from 'react-router-dom';
 
+import Home from './components/home/Home.jsx';
+import Login from './components/auth/Login.jsx';
+import Registration from './components/auth/Registration.jsx';
+import Shop from './components/shop/Shop.jsx';
+import UserPage from './components/user/UserPage.jsx';
+
 export default function Navigation() {
 
   return (
@@ -42,7 +48,7 @@ export default function Navigation() {
         </Route>
 
         <Route path="user/:id">
-          <User />
+          <UserPage />
         </Route>
 
 
