@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "live-server ./dist",
+    "sass": "sass src/styles/sass.scss:src/styles/styles.css --watch --no-source-map",
     "build": "npx webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
