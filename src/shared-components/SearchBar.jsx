@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import shops from './shops.json';
 
 export default function SearchBar({ type, results, setResults }) {
 
@@ -35,16 +34,21 @@ export default function SearchBar({ type, results, setResults }) {
   };
 
   return (
-    <>
+    <div className="search-div">
       <input
-        type="text"
+        className="search"
+        type="search"
         onChange={(e) => setQuery(e.target.value)}
         placeholder={`search for ${type}`}
       />
 
       {/* instead of a search button we could
       use a font awesome icon */}
-      <button onChange={handleSearch}>Search</button>
-    </>
+      <button
+        className="search-button"
+        onChange={handleSearch}>
+          Search
+      </button>
+    </div>
   );
 }

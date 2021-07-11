@@ -7,5 +7,5 @@ export default function App() {
       <h1>Hello World Alec Changes</h1>
 
     </>
-  )
+  );
 }
