@@ -6,8 +6,6 @@ export default function App() {
   return (
     <>
       <Navigation />
-      <h1>Hello World Alec Changes</h1>
-
     </>
   );
 }
