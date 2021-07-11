@@ -45,6 +45,8 @@ export default function Navigation() {
           <Home />
         </Route>
 
+        {/* Might be easier to pass props to AuthPage here
+        rather than through the Link */}
         <Route exact path="/login">
           <AuthPage />
         </Route>
@@ -55,7 +57,7 @@ export default function Navigation() {
 
         {/* The variable will just be the shop id */}
         <Route path="shop/:id">
-          <Shop />
+          <ShopPage />
         </Route>
 
         <Route path="user/:id">
