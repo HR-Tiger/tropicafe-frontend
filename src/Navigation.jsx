@@ -26,14 +26,14 @@ export default function Navigation() {
 
       <Link to={{
         pathname: '/login',
-        state: { type: 'login' }
+        state: { login: true }
       }}>
         Login
       </Link>
 
       <Link to={{
         pathname: 'signup',
-        state: { type: 'registration' }
+        state: { login: false }
       }}>
         Sign Up
       </Link>
