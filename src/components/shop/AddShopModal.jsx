@@ -35,7 +35,7 @@ export default function AddShopModal({ toggleAddShopModal }) {
       <div className='modalWrapper'>
         <div className='modalContainer'>
           <button onClick={() => toggleAddShopModal(event, false)}>X</button>
-          <h3>Add a New Coffe Shop!</h3>
+          <h3>Add a New Coffee Shop!</h3>
           <form onSubmit={handleSubmit}>
             <div className="row ">
               <div className="col">

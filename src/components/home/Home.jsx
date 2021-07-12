@@ -44,11 +44,14 @@ export default function Home() {
     <>
 
       <button onClick={(event) => { toggleAddShopModal(event, true); }}>Add Shop</button>
+
       <div className='popularShopsContainer'>
         {seeMorePopular ? <>
+          <h2>Popular Coffee Shops</h2>
           <ShopList ShopList={allPopularShops} />
           <button onClick={(event) => { toggleMorePopular(event, false); }}>See Less</button>
         </> : <>
+          <h2>Popular Coffee Shops</h2>
           <ShopList ShopList={popularShops} />
           <button onClick={(event) => { toggleMorePopular(event, true); }}>See More Popular Shops</button>
         </>}
@@ -56,17 +59,18 @@ export default function Home() {
 
       <div className='recentShopsContainer'>
         {seeMoreRecent ? <>
+          <h2>Recently Added Coffee Shops</h2>
           <ShopList ShopList={allRecentShops} />
           <button onClick={(event) => { toggleMoreRecent(event, false); }}>See Less</button>
         </> : <>
+          <h2>Recently Added Coffee Shops</h2>
           <ShopList ShopList={recentShops} />
           <button onClick={(event) => { toggleMoreRecent(event, true); }}>See More Recent Shops</button>
         </>}
       </div>
 
-      {addShopModal ? <AddShopModal
-        toggleAddShopModal={toggleAddShopModal}
-      /> : null}
+      {addShopModal && <AddShopModal
+        toggleAddShopModal={toggleAddShopModal} />}
     </>
   );
 }
