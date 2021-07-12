@@ -7,14 +7,13 @@ export default function ShopHeader({ shop }) {
     <div className="shop-header">
 
       <img
-        className="shop-photo"
+        className="img-thumbnail"
         src={shop.image}
       />
 
       <div className="shop-info">
 
         <div className="shop-address">
-
         </div>
 
       </div>
