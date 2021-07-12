@@ -45,6 +45,7 @@ export default function Navigation() {
           <Home />
         </Route>
 
+
         <Route exact path="/login">
           <AuthPage />
         </Route>
