@@ -1,10 +1,11 @@
 import React from 'react';
+import './styles/sass.scss';
+import Navigation from './Navigation.jsx';
 
 export default function App() {
   return (
     <>
-      <h1>Hello World Alec Changes</h1>
-
+      <Navigation />
     </>
-  )
+  );
 }
