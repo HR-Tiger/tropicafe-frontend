@@ -4,7 +4,7 @@ import axios from 'axios';
 import ShopHeader from './ShopHeader.jsx';
 // import ReviewList from '../shared-components/ReviewList.jsx';
 
-export default function ShopPage() {
+const ShopPage = () => {
   const [shop, setShop] = useState({});
   const { id } = useParams();
 
@@ -17,10 +17,12 @@ export default function ShopPage() {
 
   return (
     <>
-      <ShopHeader shop={shop} />
+      {/* <ShopHeader shop={shop} /> */}
 
       {/* assuming ReviewList will make a get request for the shop id */}
       {/* <ReviewList id={shop.id} /> */}
     </>
   );
-}
+};
+
+export default ShopPage;
