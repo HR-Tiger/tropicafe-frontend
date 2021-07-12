@@ -10,8 +10,8 @@ const ReviewList = () => {
     getReview(2);
   }, []);
 
-  const getReview = ((shop_id) => {
-    axios.get(`http://3.239.52.75/api/shops/${shop_id}/reviews`)
+  const getReview = (shopId => {
+    axios.get(`http://3.239.52.75/api/shops/${shopId}/reviews`)
       .then (data => {
         setReviewList(data.data);
       })
