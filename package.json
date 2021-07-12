@@ -4,7 +4,7 @@
   "description": "A review coffee shop web application with a tropical theme.",
   "main": "index.js",
   "scripts": {
-    "start": "live-server ./dist",
+    "start": "nodemon index.js",
     "sass": "sass src/styles/sass.scss:src/styles/styles.css --watch --no-source-map",
     "build": "npx webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -43,6 +43,10 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
+    "eslint": "^7.30.0",
+    "live-server": "^1.2.1",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0"
