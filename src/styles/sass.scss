@@ -31,6 +31,7 @@ body {
 	height: 100vh;
 	background-image: url('/storage/bg2.jpg');
 	background-size: cover;
+	background-position: center;
 
 	h1 {
 		color: purple
@@ -154,3 +155,7 @@ button {
         transition: opacity .3s ease, margin .5s ease;
     }
 }
+
+/*****************************************************
+********************* User Profile Page ***********
+******************************************************/
