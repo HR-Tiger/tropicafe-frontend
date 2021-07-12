@@ -5,19 +5,18 @@ import ShopHeader from './ShopHeader.jsx';
 // import ReviewList from '../shared-components/ReviewList.jsx';
 
 const ShopPage = () => {
-  const [shop, setShop] = useState({}); // shop info might come through link/props
-  const [reviews, setReviews] = useState([]);
-  const { id } = useParams(); // link/props
+  const [shop, setShop] = useState({});
+  const { id } = useParams();
 
   useEffect(() => {
-    return axios.get(`http://3.239.52.75/api/${id}/reviews`)
-      .then(res => setReviews(res.data))
+    axios.get(`http://3.239.52.75/api/shops/${id}`)
+      .then(res => setShop(res.data))
       .catch(e => console.log(e));
   }, [id]);
 
   return (
     <>
-      {/* <ShopHeader shop={shop} /> */}
+      <ShopHeader shop={shop} />
 
       {/* assuming ReviewList will make a get request for the shop id */}
       {/* <ReviewList id={shop.id} /> */}

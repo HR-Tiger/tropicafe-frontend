@@ -71,9 +71,9 @@ export default function Navigation() {
           <ShopPage />
         </Route>
 
-        <Route path="/reviews">
+        {/* <Route path="/reviews">
           <Review />
-        </Route>
+        </Route> */}
 
         {/* The variable will just be the shop id */}
         {/* <Route path="shop/:id">
