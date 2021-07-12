@@ -16,6 +16,7 @@ import ShopPage from './components/shop/ShopPage.jsx';
 import Review from './shared-components/Review.jsx';
 
 export default function Navigation() {
+  const linkStyle = {margin: '5px'};
 
   return (
 
@@ -24,27 +25,27 @@ export default function Navigation() {
 
       {/* These are individual links that lead to the defined path
           This what we will use anywhere we have a link */}
-      <Link to="/">Home</Link>
+      <Link style={linkStyle} to="/">Home</Link>
 
-      <Link to={{
+      <Link style={linkStyle} to={{
         pathname: '/login',
         state: { type: 'login' }
       }}>
         Login
       </Link>
 
-      <Link to={{
+      <Link style={linkStyle} to={{
         pathname: 'signup',
         state: { type: 'registration' }
       }}>
         Sign Up
       </Link>
 
-      <Link to="/user">My profile</Link>
+      <Link style={linkStyle} to="/user">My profile</Link>
 
-      <Link to="/shop">Shop</Link>
+      <Link style={linkStyle} to="/shop">Shop</Link>
 
-      <Link to="/reviews">Reviews</Link>
+      <Link style={linkStyle} to="/reviews">Reviews</Link>
 
       <Switch>
 
