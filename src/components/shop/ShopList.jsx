@@ -10,7 +10,7 @@ const ShopList = ({ ShopList }) => {
 
     <div className='shopListContainer'>
       {ShopList.map((shop => {
-        return <Shop shop={shop} />;
+        return <Shop key={shop.shop_id} shop={shop} />;
 
       }))}
     </div>

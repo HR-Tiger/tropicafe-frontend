@@ -1,27 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import ShopList from '../shop/ShopList.jsx';
 import AddShopModal from '../shop/AddShopModal.jsx';
+import axios from 'axios';
+
 export default function Home() {
 
-  const [popularShops, setpopularShops] = useState([{ stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }]);
-  const [recentShops, setrecentShops] = useState([{ stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }]);
+  const [popularShops, setpopularShops] = useState([]);
+  const [recentShops, setrecentShops] = useState([]);
 
-  const [allPopularShops, setallPopularShops] = useState([{ stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }, { stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }, { stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }]);
-  const [allRecentShops, setRecentShops] = useState([{ stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }, { stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }, { stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }]);
+  const [allPopularShops, setallPopularShops] = useState([]);
+  const [allRecentShops, setallRecentShops] = useState([]);
+
+
 
   const [seeMoreRecent, setseeMoreRecent] = useState(false);
   const [seeMorePopular, setseeMorePopular] = useState(false);
   const [addShopModal, setAddShopModal] = useState(false);
-  // useEffect(() => {
-  //   axios.get('./popularShops')
-  //     .then(res => {
-  //       setpopularShops(res.data);
-  //       axios.get('./recentShops');
-  //     })
-  //     .then(res => {
-  //       setrecentShops(res.data);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios.get('http://3.239.52.75/api/highRatingShops')
+      .then(res => {
+        setallPopularShops(res.data);
+        setpopularShops([res.data[0], res.data[1], res.data[2]]);
+        console.log(res.data);
+        return axios.get('http://3.239.52.75/api/recentShops');
+      })
+      .then(res => {
+        setallRecentShops(res.data);
+        setrecentShops([res.data[0], res.data[1], res.data[2]]);
+    console.log(res.data);
+      });
+  }, []);
 
   const toggleMoreRecent = (e, value) => {
     e.preventDefault();
