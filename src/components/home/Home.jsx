@@ -1,39 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import ShopList from '../shop/ShopList.jsx';
 import AddShopModal from '../shop/AddShopModal.jsx';
+import axios from 'axios';
+import '../../styles/styles.css';
 export default function Home() {
 
-  const [popularShops, setpopularShops] = useState([{ stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }]);
-  const [recentShops, setrecentShops] = useState([{ stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }]);
+  const [popularShops, setPopularShops] = useState([]);
+  const [recentShops, setRecentShops] = useState([]);
 
-  const [allPopularShops, setallPopularShops] = useState([{ stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }, { stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }, { stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }]);
-  const [allRecentShops, setRecentShops] = useState([{ stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }, { stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }, { stuff: 'stuff' }, { studd: 'stuff' }, { stugg: 'stuff' }]);
+  const [allPopularShops, setallPopularShops] = useState([]);
+  const [allRecentShops, setallRecentShops] = useState([]);
 
-  const [seeMoreRecent, setseeMoreRecent] = useState(false);
-  const [seeMorePopular, setseeMorePopular] = useState(false);
+
+
+  const [seeMoreRecent, setSeeMoreRecent] = useState(false);
+  const [seeMorePopular, setSeeMorePopular] = useState(false);
   const [addShopModal, setAddShopModal] = useState(false);
-  // useEffect(() => {
-  //   axios.get('./popularShops')
-  //     .then(res => {
-  //       setpopularShops(res.data);
-  //       axios.get('./recentShops');
-  //     })
-  //     .then(res => {
-  //       setrecentShops(res.data);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios.get('http://3.239.52.75/api/highRatingShops')
+      .then(res => {
+        setallPopularShops(res.data);
+        setPopularShops(res.data.slice(0, 3));
+        console.log(res.data);
+      });
+    axios.get('http://3.239.52.75/api/recentShops')
+      .then(res => {
+        setallRecentShops(res.data);
+        setRecentShops(res.data.slice(0, 3));
 
-  const toggleMoreRecent = (e, value) => {
-    e.preventDefault();
-    setseeMoreRecent(value);
-  };
+      });
+  }, []);
 
-
-
-  const toggleMorePopular = (e, value) => {
-    e.preventDefault();
-    setseeMorePopular(value);
-  };
 
   const toggleAddShopModal = (e, value) => {
     e.preventDefault();
@@ -42,35 +39,43 @@ export default function Home() {
 
   return (
     <>
+      <div className='homeContainer'>
+        <h1>TropiCafe</h1>
+        <button className='addShopButton' onClick={(event) => { toggleAddShopModal(event, true); }}>Add Shop</button>
 
-      <button onClick={(event) => { toggleAddShopModal(event, true); }}>Add Shop</button>
+        <div className='popularShopsContainer'>
+          {seeMorePopular ? (<>
+            <h2 className='popular-title'>Popular Coffee Shops</h2>
+            <ShopList ShopList={allPopularShops} />
+            <button onClick={() => setSeeMorePopular(false)}>See Less</button>
+          </>
+          ) : (
+            <>
+              <h2 className='popular-title'>Popular Coffee Shops</h2>
+              <ShopList ShopList={popularShops} />
+              <button onClick={() => setSeeMorePopular(true)}>See More Popular Shops</button>
 
-      <div className='popularShopsContainer'>
-        {seeMorePopular ? <>
-          <h2>Popular Coffee Shops</h2>
-          <ShopList ShopList={allPopularShops} />
-          <button onClick={(event) => { toggleMorePopular(event, false); }}>See Less</button>
-        </> : <>
-          <h2>Popular Coffee Shops</h2>
-          <ShopList ShopList={popularShops} />
-          <button onClick={(event) => { toggleMorePopular(event, true); }}>See More Popular Shops</button>
-        </>}
+            </>)}
+        </div>
+
+        <div className='recentShopsContainer'>
+          {seeMoreRecent ? (
+            <>
+              <h2 className='recent-title'>Recently Added Coffee Shops</h2>
+              <ShopList ShopList={allRecentShops} />
+              <button onClick={() => setSeeMoreRecent(false)}>See Less</button>
+            </>
+          ) : (
+            <>
+              <h2 className='recent-title'>Recently Added Coffee Shops</h2>
+              <ShopList ShopList={recentShops} />
+              <button onClick={() => setSeeMoreRecent(true)}>See More Recent Shops</button>
+            </>)}
+        </div>
+
+        {addShopModal && <AddShopModal
+          toggleAddShopModal={toggleAddShopModal} />}
       </div>
-
-      <div className='recentShopsContainer'>
-        {seeMoreRecent ? <>
-          <h2>Recently Added Coffee Shops</h2>
-          <ShopList ShopList={allRecentShops} />
-          <button onClick={(event) => { toggleMoreRecent(event, false); }}>See Less</button>
-        </> : <>
-          <h2>Recently Added Coffee Shops</h2>
-          <ShopList ShopList={recentShops} />
-          <button onClick={(event) => { toggleMoreRecent(event, true); }}>See More Recent Shops</button>
-        </>}
-      </div>
-
-      {addShopModal && <AddShopModal
-        toggleAddShopModal={toggleAddShopModal} />}
     </>
   );
 }
