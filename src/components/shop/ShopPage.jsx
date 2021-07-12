@@ -9,9 +9,11 @@ const ShopPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://3.239.52.75/api/shops/${id}`)
-      .then(res => setShop(res.data))
-      .catch(e => console.log(e));
+    if (id) {
+      axios.get(`http://3.239.52.75/api/shops/${id}`)
+        .then(res => setShop(res.data))
+        .catch(e => console.log(e));
+    }
   }, [id]);
 
   return (
