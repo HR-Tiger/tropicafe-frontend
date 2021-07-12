@@ -11,9 +11,10 @@ let shop = {
   'phone_number': '239-398-1215',
   'website': 'https://bing.com',
   'animal_friendly': true,
+  'price': 3,
   'photos': [
     {
-      'url': 'http://dummyimage.com/101x100.png/cc0000/ffffff'
+      'url': 'http://dummyimage.com/300X300.png/cc0000/ffffff'
     },
     {
       'url': 'http://dummyimage.com/235x100.png/ff4444/ffffff'
@@ -26,8 +27,9 @@ let shop = {
 
 const style = {
   display: 'flex',
-  'justify-content': 'space-between',
+  justifyContent: 'space-between',
   width: '7rem',
+  alignItems: 'center'
 };
 
 export default function ShopHeader() {
@@ -37,7 +39,7 @@ export default function ShopHeader() {
 
     return mapper.map((dollar, i) => {
       return (
-        <div style={style}>
+        <div key={i} style={{display: 'inline'}}>
           <i className="fas fa-dollar-sign"></i>
         </div>
       );
@@ -45,28 +47,39 @@ export default function ShopHeader() {
   };
 
   return (
-    <div className="card" style={{width: '18rem'}}>
-      <img src={shop.photos[0].url} className="card-img-top" alt={`${shop.name} photo`} />
-      <div className="card-body">
-        <h5 className="card-title">{shop.name}</h5>
-        {shop.price && (
-          <div>
-            <i className="fas fa-dollar-sign"></i>
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          <img
+            src={shop.photos[0].url}
+            className="rounded float-start"
+            alt={`${shop.name} photo`}
+          />
+        </div>
+        <div className="col">
+          <div className="card" style={{width: '18rem'}}>
+            <div className="card-body">
+              <h5 className="card-title">{shop.name}</h5>
+              {shop.price && (
+                <div>
+                  {displayPrice()}
+                </div>
+              )}
+              {shop.animal_friendly && (
+                <div style={style}>
+                  <i className="fas fa-paw"></i>
+                  <p className="card-text">Pet friendly</p>
+                </div>
+              )}
+            </div>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">{shop.phone_number}</li>
+              <li className="list-group-item">{shop.address} {shop.city}, {shop.state} {shop.zip}</li>
+              <li className="list-group-item card-link">{shop.website}</li>
+            </ul>
           </div>
-        )}
-        {shop.animal_friendly && (
-          <div>
-            <i className="fas fa-paw"></i>
-            <p className="card-text">Pet friendly</p>
-          </div>
-        )}
-
+        </div>
       </div>
-      <ul className="list-group list-group-flush">
-        <li className="list-group-item">{shop.phone_number}</li>
-        <li className="list-group-item">{shop.address} {shop.city}, {shop.state} {shop.zip}</li>
-        <li className="list-group-item card-link">{shop.website}</li>
-      </ul>
     </div>
   );
 }
