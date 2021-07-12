@@ -167,7 +167,7 @@ button:hover {
 .shopListContainer {
   display: flex;
   flex-wrap: wrap;
-  padding: 50px;
+  padding: 60px;
 }
 
 .cardContainer {
@@ -181,6 +181,8 @@ button:hover {
 
 .star {
   position: relative;
+  bottom: 15px;
+  right: 17px;
 }
 
 .dark-star, .rating-star {
@@ -188,4 +190,27 @@ button:hover {
   width: 80px;
   height: 20px;
   position: absolute;
+}
+
+.addShopButton {
+  width: 150px;
+}
+
+.homeContainer {
+  background-image: url("/storage/bg2.jpg");
+  background-size: cover;
+}
+
+.recent-title {
+  color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.popular-title {
+  color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }

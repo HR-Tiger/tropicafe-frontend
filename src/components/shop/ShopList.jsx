@@ -7,14 +7,15 @@ const ShopList = ({ ShopList }) => {
 
 
   return (
+    <>
 
-    <div className='shopListContainer'>
-      {ShopList.map((shop => {
-        return <Shop key={shop.shop_id} shop={shop} />;
+      <div className='shopListContainer'>
+        {ShopList.map((shop => {
+          return <Shop key={shop.shop_id} shop={shop} />;
 
-      }))}
-    </div>
-
+        }))}
+      </div>
+    </>
   );
 };
 export default ShopList;
