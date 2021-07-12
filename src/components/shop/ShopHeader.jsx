@@ -24,40 +24,49 @@ let shop = {
   ]
 };
 
+const style = {
+  display: 'flex',
+  'justify-content': 'space-between',
+  width: '7rem',
+};
+
 export default function ShopHeader() {
 
+  const displayPrice = () => {
+    let mapper = Array.from({length: shop.price}, (v, i) => i);
+
+    return mapper.map((dollar, i) => {
+      return (
+        <div style={style}>
+          <i className="fas fa-dollar-sign"></i>
+        </div>
+      );
+    });
+  };
 
   return (
-    <div className="shop-header">
-
-      <img
-        className="img-thumbnail"
-        src={shop.photos[0]}
-      />
-
-      <div className="shop-info">
-
-        <div className="shop-address">
-          {shop.address}
-          {shop.city}, {shop.state} {shop.zip}
-          {shop.phone_number}
-          {shop.website}
-        </div>
-
-        <div className="card">
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">{shop.website}</li>
-            <li className="list-group-item">{shop.address} {shop.city} {shop.state} </li>
-            <li className="list-group-item">{shop.website}</li>
-          </ul>
-        </div>
-
-        <div>
-
-        </div>
+    <div className="card" style={{width: '18rem'}}>
+      <img src={shop.photos[0].url} className="card-img-top" alt={`${shop.name} photo`} />
+      <div className="card-body">
+        <h5 className="card-title">{shop.name}</h5>
+        {shop.price && (
+          <div>
+            <i className="fas fa-dollar-sign"></i>
+          </div>
+        )}
+        {shop.animal_friendly && (
+          <div>
+            <i className="fas fa-paw"></i>
+            <p className="card-text">Pet friendly</p>
+          </div>
+        )}
 
       </div>
-
+      <ul className="list-group list-group-flush">
+        <li className="list-group-item">{shop.phone_number}</li>
+        <li className="list-group-item">{shop.address} {shop.city}, {shop.state} {shop.zip}</li>
+        <li className="list-group-item card-link">{shop.website}</li>
+      </ul>
     </div>
   );
 }
