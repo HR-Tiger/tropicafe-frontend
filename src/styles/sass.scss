@@ -12,10 +12,9 @@ body {
 
 .review {
 	margin-bottom: 10px;
-	width: 100%;
 	max-width: 1000px;
   display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(100px, 600px));
+  grid-template-columns: 150px 1fr;
   grid-template-rows: 25px 25px 25px 25px 25px auto auto 20px;
   border: solid 1px black;
   align-items: center;
@@ -57,6 +56,7 @@ body {
     grid-column-end: 2;
     grid-row-start: 3;
     grid-row-end: 3;
+    padding-left: 1em;
   }
 
   .date {
@@ -92,10 +92,11 @@ body {
     grid-column-end: 1;
     grid-row-start: 8;
     grid-row-end: 8;
-    width: 60px;
+    width: 100px;
     height: 25px;
     padding: 0;
     margin-top: 10px;
+    white-space: nowrap;
   }
 }
 
@@ -369,4 +370,8 @@ right: 17px;
   display: flex;
   align-content: center;
   justify-content: center;
+}
+
+.sm-button {
+  width: fit-content;
 }

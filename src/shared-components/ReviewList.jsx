@@ -12,12 +12,14 @@ const ReviewList = ({ id, type }) => {
     }
   }, [id]);
 
-  // let api = type === 'shop' ? `http://3.239.52.75/api/shops/${shopId}/reviews` : 'user api'
+  let api = type === 'shop' ? `http://3.239.52.75/api/shops/${id}/reviews` : `http://3.239.52.75/api/reviews/users/${id}`;
 
-  const getReview = (shopId => {
-    axios.get(`http://3.239.52.75/api/shops/${shopId}/reviews`)
+  // console.log(api);
+
+  const getReview = (id => {
+    axios.get(api)
       .then (data => {
-        console.log(data);
+        // console.log(data);
         setReviewList(data.data);
       })
       .catch(err => {
@@ -28,7 +30,7 @@ const ReviewList = ({ id, type }) => {
   return (
     <div className='reviewsContainer'>
       {reviewList.map(review => {
-        return <Review key={review.review_id} review={review}/>;
+        return <Review key={review.review_id} review={review} type={type}/>;
       })}
     </div>
   );
