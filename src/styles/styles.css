@@ -12,6 +12,7 @@ body h1 {
 .review {
   margin-bottom: 10px;
   width: 100%;
+  max-width: 1000px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 600px));
   grid-template-rows: 25px 25px 25px 25px 25px auto auto 20px;
