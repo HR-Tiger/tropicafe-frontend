@@ -14,6 +14,7 @@ const ShopList = ({ ShopList }) => {
           return <Shop key={shop.shop_id} shop={shop} />;
 
         }))}
+
       </div>
     </>
   );
