@@ -134,43 +134,6 @@ button:hover {
   flex-grow: 1;
   height: 450px;
   width: calc(100% * (1/4) - 20px - 1px);
-  border-radius: 10px;
-}
-
-.star {
-  position: relative;
-  bottom: 15px;
-  right: 17px;
-}
-
-.dark-star, .rating-star {
-  color: pink;
-  width: 80px;
-  height: 20px;
-  position: absolute;
-}
-
-.addShopButton {
-  width: 150px;
-}
-
-.homeContainer {
-  background-image: url("/storage/bg2.jpg");
-  background-size: cover;
-}
-
-.recent-title {
-  color: white;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-}
-
-.popular-title {
-  color: white;
-  display: flex;
-  align-content: center;
-  justify-content: center;
 }
 
 /*****************************************************
@@ -225,7 +188,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 35px;
+  margin-top: 25px;
 }
 .userHeader .profileInfoContainer .info {
   padding: 5px 10px;
@@ -244,4 +207,41 @@ button:hover {
 
 .reviewList {
   height: 70%;
+  border-radius: 10px;
+}
+
+.star {
+  position: relative;
+  bottom: 15px;
+  right: 17px;
+}
+
+.dark-star, .rating-star {
+  color: pink;
+  width: 80px;
+  height: 20px;
+  position: absolute;
+}
+
+.addShopButton {
+  width: 150px;
+}
+
+.homeContainer {
+  background-image: url("/storage/bg2.jpg");
+  background-size: cover;
+}
+
+.recent-title {
+  color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.popular-title {
+  color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
