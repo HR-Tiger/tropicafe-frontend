@@ -7,6 +7,96 @@ body {
   }
 }
 
+/*
+******* REVIEW *******
+*/
+
+.review {
+  width: 800px;
+  display: grid;
+  grid-template-columns: 150px 600px;
+  grid-template-rows: 25px 25px 25px 25px 25px auto auto 20px;
+  border: solid 1px black;
+  align-items: center;
+  padding: 1em;
+  border-radius: 0.5em;
+ 	background: linear-gradient(360deg, #01a99c 10%, #0698b1 360%);
+ 	box-shadow: 0 0 16px 0 rgba(0,0,0,0.1);
+  color: white;
+
+  .pic {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: 5;
+    margin-top: 15px;
+    place-self: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+
+  }
+
+  .username {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+
+  .location {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
+
+  .rating {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 3;
+  }
+
+  .date {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 4;
+    grid-row-end: 4;
+  }
+
+  .review-text {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 6;
+    grid-row-end: 6;
+  }
+
+  .photos {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 7;
+    grid-row-end: 7;
+
+    .photo {
+      width: 150px;
+      height: 150px;
+      padding: 5px;
+      border-radius: 0.5em;
+    }
+  }
+
+  .helpful {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 8;
+    grid-row-end: 8;
+    width: 60px;
+    height: 25px;
+    padding: 0;
+    margin-top: 10px;
+  }
+}
 
 /*****************************************************
 ********************* LOGIN / REGISTRATION ***********
@@ -110,6 +200,7 @@ button {
 /*****************************************************
 ********************* ALEC ***************************
 ******************************************************/
+
 .modalWrapper {
   background: rgba(0,0,0,0.7);
   z-index: 4;
@@ -273,4 +364,3 @@ right: 17px;
   align-content: center;
   justify-content: center;
 }
-
