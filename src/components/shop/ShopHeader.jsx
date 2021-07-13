@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import StarRating from './StarRating.jsx';
+import AddReview from './AddReview.jsx';
 import comingSoon from '../../../dist/coming-soon.jpg';
 
 const style = {
@@ -9,6 +11,7 @@ const style = {
 };
 
 export default function ShopHeader({ shop }) {
+  const [showModal, setShowModal] = useState(false);
 
   const displayPrice = () => {
     let mapper = Array.from({length: shop.price}, (v, i) => i);
@@ -22,22 +25,24 @@ export default function ShopHeader({ shop }) {
     });
   };
 
+  // Just so it isn't 100 characters long
+  shop.website = shop.website.slice(0, 20);
+
   var imageURL = shop.photos ? shop.photos[0].url : comingSoon;
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col">
-          <img
-            src={imageURL}
-            className="rounded float-start"
-            alt={`${shop.name} photo`}
-          />
-        </div>
-        <div className="col">
-          <div className="card" style={{width: '18rem'}}>
-            <div className="card-body">
-              <h5 className="card-title">{shop.name}</h5>
+      <div className="row mb-2">
+        <div className="col-md-6">
+          <div className="card flex-lg-row mb-4 p-4 box-shadow h-md-250">
+            <img
+              src={imageURL}
+              className="card-img-left flex-auto d-none d-md-block rounded"
+              alt={`${shop.name} photo`}
+            />
+            <div className="card-body d-flex flex-column align-items-start">
+              <h1 className="display-3">Bill's Coffee</h1>
+              <StarRating Rating={shop.avg_rating} />
               {shop.price && (
                 <div>
                   {displayPrice()}
@@ -50,14 +55,34 @@ export default function ShopHeader({ shop }) {
                 </div>
               )}
             </div>
+          </div>
+        </div>
+        <div className="col-sm-6">
+          <div className="card" style={{width: '18rem'}}>
+            <div className="card-body">
+              <h4>Contact:</h4>
+            </div>
             <ul className="list-group list-group-flush">
               <li className="list-group-item">{shop.phone_number}</li>
-              <li className="list-group-item">{shop.address} {shop.city}, {shop.state} {shop.zip}</li>
+              <li className="list-group-item">
+                <a
+                  href={`http://maps.google.com/?q=${shop.address} ${shop.city}, ${shop.state} ${shop.zip}`}
+                  target="_blank">
+                    Get directions
+                </a>
+                <br></br>
+                {shop.address} {shop.city}, {shop.state} {shop.zip}
+              </li>
               <li className="list-group-item card-link">{shop.website}</li>
             </ul>
           </div>
+          <button className="btn btn-outline-primary my-3 sm-button" onClick={() => setShowModal(true)}>Add a review</button>
         </div>
       </div>
+
+      {showModal && <AddReview shopId={shop.shop_id} setShowModal={setShowModal} />}
+
     </div>
   );
 }
+
