@@ -2,8 +2,6 @@ import React from 'react';
 
 export default function UserHeader({userInfo}) {
 
-  console.log('userInfo: ', userInfo);
-
   return (
     <div className='userHeader'>
       <img src={`${userInfo.profile_photo_url}`} />

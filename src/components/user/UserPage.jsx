@@ -11,8 +11,6 @@ export default function UserPage() {
     });
   }, []);
 
-  console.log('userInfo: ', userInfo);
-
   return (
     <div className='profilePageBody'>
       <div className='.wave'></div>
