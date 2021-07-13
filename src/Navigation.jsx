@@ -67,18 +67,16 @@ export default function Navigation() {
           <UserPage />
         </Route>
 
-        <Route path="/shop">
+        {/* <Route path="/shop">
           <ShopPage />
-        </Route>
+        </Route> */}
 
         {/* <Route path="/reviews">
           <Review />
         </Route> */}
 
         {/* The variable will just be the shop id */}
-        {/* <Route path="shop/:id">
-          <Shop />
-        </Route> */}
+        <Route path="/shop/:id" component={ShopPage} />
 
         {/* <Route path="user/:id">
           <UserPage />
