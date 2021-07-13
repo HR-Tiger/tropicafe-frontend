@@ -54,6 +54,7 @@ export default function Navigation() {
           <Home />
         </Route>
 
+
         <Route exact path="/login">
           <AuthPage />
         </Route>
@@ -73,6 +74,7 @@ export default function Navigation() {
         <Route path="/reviews">
           <ReviewList />
         </Route>
+
 
         {/* The variable will just be the shop id */}
         {/* <Route path="shop/:id">
