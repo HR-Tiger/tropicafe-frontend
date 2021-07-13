@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import ShopList from '../shop/ShopList.jsx';
-import AddShopModal from '../shop/AddShopModal.jsx';
+import AddShopModal from './AddShopModal.jsx';
+import ShopFilter from './ShopFilter.jsx';
 import axios from 'axios';
 import '../../styles/styles.css';
 export default function Home() {
 
   const [popularShops, setPopularShops] = useState([]);
   const [recentShops, setRecentShops] = useState([]);
-
   const [allPopularShops, setallPopularShops] = useState([]);
   const [allRecentShops, setallRecentShops] = useState([]);
-
-
-
   const [seeMoreRecent, setSeeMoreRecent] = useState(false);
   const [seeMorePopular, setSeeMorePopular] = useState(false);
   const [addShopModal, setAddShopModal] = useState(false);
+
   useEffect(() => {
     axios.get('http://3.239.52.75/api/highRatingShops')
       .then(res => {
@@ -40,9 +38,11 @@ export default function Home() {
   return (
     <>
       <div className='homeContainer'>
-        <h1>TropiCafe</h1>
-        <button className='addShopButton' onClick={(event) => { toggleAddShopModal(event, true); }}>Add Shop</button>
-
+        <h1 className='homeTitle'>TropiCafe</h1>
+        <div className='homeHeader'>
+          <button className='addShopButton' onClick={(event) => { toggleAddShopModal(event, true); }}>Add Shop</button>
+          <ShopFilter/>
+        </div>
         <div className='popularShopsContainer'>
           {seeMorePopular ? (<>
             <h2 className='popular-title'>Popular Coffee Shops</h2>
