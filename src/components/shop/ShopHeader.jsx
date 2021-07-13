@@ -10,32 +10,6 @@ const style = {
   alignItems: 'center'
 };
 
-// let shop = {
-//   'shop_id': 1,
-//   'name': 'sit',
-//   'address': '2 Reinke Road',
-//   'city': 'Naples',
-//   'state': 'FL',
-//   'zip': 112,
-//   'date': '1604901282000',
-//   'phone_number': '239-398-1215',
-//   'website': 'https://bing.com',
-//   'animal_friendly': true,
-//   'price': 3,
-//   'photos': [
-//     {
-//       'url': 'http://dummyimage.com/300X300.png/cc0000/ffffff'
-//     },
-//     {
-//       'url': 'http://dummyimage.com/235x100.png/ff4444/ffffff'
-//     },
-//     {
-//       'url': 'http://dummyimage.com/212x100.png/cc0000/ffffff'
-//     }
-//   ]
-// };
-
-
 export default function ShopHeader({ shop }) {
   const [showModal, setShowModal] = useState(false);
 
@@ -109,11 +83,11 @@ export default function ShopHeader({ shop }) {
               <li className="list-group-item card-link">{shop.website}</li>
             </ul>
           </div>
-          <button className="btn btn-outline-primary" onClick={() => setShowModal(true)}>Add a review</button>
+          <button className="btn btn-outline-primary my-3 sm-button" onClick={() => setShowModal(true)}>Add a review</button>
         </div>
       </div>
 
-      {showModal && <AddReview />}
+      {showModal && <AddReview shopId={shop.shop_id} setShowModal={setShowModal} />}
 
     </div>
   );

@@ -325,3 +325,7 @@ button:hover {
   align-content: center;
   justify-content: center;
 }
+
+.sm-button {
+  width: fit-content;
+}
