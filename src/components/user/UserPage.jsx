@@ -15,11 +15,10 @@ export default function UserPage() {
 
   return (
     <div className='profilePageBody'>
-      <div className='.wave'></div>
       <main className='profileContainer'>
         <UserHeader userInfo={userInfo} reviews={reviews} />
         <section className='reviewList'>
-          <ReviewList />
+          <ReviewList id={1} type={'shop'}/>
         </section>
       </main>
 
