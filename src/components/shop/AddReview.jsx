@@ -46,7 +46,6 @@ export default function AddReview({ shopId, setShowModal }) {
                   value={review.category}
                   required
                   onChange={(e) => {
-                    console.log(e);
                     setReview(prev => ({...prev, category: e.target.value}));
                   }}>
                   <option value="">Choose a drink category</option>
