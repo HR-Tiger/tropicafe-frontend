@@ -103,17 +103,6 @@ body {
 ******************************************************/
 
 
-#app {
-	font-family: 'Montserrat', sans-serif;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: #fcfcfc;
-	height: 100vh;
-}
-
 .authPageBody {
 	display: flex;
 	flex-direction: column;
@@ -122,6 +111,7 @@ body {
 	height: 100vh;
 	background-image: url('/storage/bg2.jpg');
 	background-size: cover;
+	background-position: center;
 
 	h1 {
 		color: purple
@@ -137,25 +127,20 @@ body {
 	position: relative;
 	display: flex;
 	justify-content: center;
-	transition: all 1s ease;
 
 	h3 {
 		display: flex;
 		justify-content: space-between;
-		margin: 0 0 0.8em 0;
 		color: white;
 		.flipper {
 			opacity: 0.5;
 			cursor: pointer;
-			transition: opacity 0.2s ease-in-out;
 
 			&:hover{
 				opacity: 1;
 			}
 		}
 	}
-
-
 }
 
 .Input {
@@ -164,8 +149,6 @@ body {
 	margin-bottom: 1em;
 	border-radius: 0.2em;
 	background: rgba(255, 255, 255, 0.1);
-
-	transition: background 0.2s ease-in-out;
 
 	&:hover {
 		background: rgba(255, 255, 255, 0.15);
@@ -214,7 +197,10 @@ button {
 	}
 }
 
-/* alec components  */
+/*****************************************************
+********************* ALEC ***************************
+******************************************************/
+
 .modalWrapper {
   background: rgba(0,0,0,0.7);
   z-index: 4;
@@ -255,8 +241,93 @@ button {
   flex-grow: 1;
   height: 450px;
   width: calc(100% * (1/4) - 20px - 1px);
-  border-radius: 10px;
 }
+
+/*****************************************************
+********************* USER PROFILE *******************
+******************************************************/
+
+.profilePageBody {
+	background: linear-gradient(360deg, #FD6F46 10%, #FB9832 360%);
+	position: relative;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	h1 {
+		color: purple;
+	}
+}
+
+.profileContainer {
+	background-color: whitesmoke;
+	border-radius: 15px;
+	width: 80%;
+	min-height: 90vh;
+	box-shadow: 2px 2px 20px rgba(0, 0, 0 ,0.5);
+}
+
+.userHeader {
+	background: url('/storage/profileHeader.jpg');
+	background-size: cover;
+	background-position: center;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	min-height: 30%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
+		img {
+			border-radius: 50%;
+			height: 150px;
+			width: 150px;
+			box-shadow: 2px 2px 20px rgba(255, 255, 255 ,0.4);
+		}
+
+	.profileInfoContainer {
+			padding: 15px;
+			background: whitesmoke;
+			border-radius: 7px;
+			min-height: 80%;
+			box-shadow: 2px 2px 20px rgba(0, 0, 0 ,0.5);
+			width: 400px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			margin-top: 25px;
+
+			.info {
+
+					padding: 5px 10px;
+					min-width: 150px;
+
+					.title {
+						font-weight: 700;
+								font-size: 27px;
+								color: #6944ff;
+								color: #324e63;
+					}
+
+					.txt {
+						font-weight: 500;
+						margin-top: 7px;
+					}
+			}
+	}
+}
+
+.reviewList {
+	height: 70%;
+	border-radius: 10px;
+}
+
+
+
+
 
 .star {
 position: relative;
