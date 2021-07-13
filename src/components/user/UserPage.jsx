@@ -18,7 +18,7 @@ export default function UserPage() {
       <main className='profileContainer'>
         <UserHeader userInfo={userInfo} reviews={reviews} />
         <section className='reviewList'>
-          <ReviewList id={1} type={'shop'}/>
+          <ReviewList id={1} type={'user'}/>
         </section>
       </main>
 
