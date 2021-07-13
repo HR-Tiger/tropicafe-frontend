@@ -33,10 +33,7 @@ export default function ShopHeader({ shop }) {
   return (
     <div className="container">
       <div className="row mb-2">
-
-
         <div className="col-md-6">
-
           <div className="card flex-lg-row mb-4 p-4 box-shadow h-md-250">
             <img
               src={imageURL}
@@ -59,11 +56,7 @@ export default function ShopHeader({ shop }) {
               )}
             </div>
           </div>
-
         </div>
-
-
-
         <div className="col-sm-6">
           <div className="card" style={{width: '18rem'}}>
             <div className="card-body">
