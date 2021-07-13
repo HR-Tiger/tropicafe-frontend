@@ -28,7 +28,7 @@ const ReviewList = ({ id, type }) => {
   });
 
   return (
-    <div>
+    <div className='reviewsContainer'>
       {reviewList.map(review => {
         return <Review key={review.review_id} review={review}/>;
       })}
