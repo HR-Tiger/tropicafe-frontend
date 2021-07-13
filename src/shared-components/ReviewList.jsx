@@ -2,17 +2,22 @@ import React, { useState, useEffect } from 'react';
 import Review from './Review.jsx';
 import axios from 'axios';
 
-const ReviewList = () => {
+const ReviewList = ({ id, type }) => {
 
   const [reviewList, setReviewList] = useState([]);
 
   useEffect (() => {
-    getReview(2);
-  }, []);
+    if (id) {
+      getReview(id);
+    }
+  }, [id]);
+
+  // let api = type === 'shop' ? `http://3.239.52.75/api/shops/${shopId}/reviews` : 'user api'
 
   const getReview = (shopId => {
     axios.get(`http://3.239.52.75/api/shops/${shopId}/reviews`)
       .then (data => {
+        console.log(data);
         setReviewList(data.data);
       })
       .catch(err => {
