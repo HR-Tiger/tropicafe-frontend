@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function UserHeader({userInfo}) {
+export default function UserHeader({userInfo, reviews}) {
 
   return (
     <div className='userHeader'>
@@ -12,7 +12,7 @@ export default function UserHeader({userInfo}) {
           <div className='txt'>Name</div>
         </div>
         <div className='info'>
-          <div className='title'>10</div>
+          <div className='title'>{reviews.length}</div>
           <div className='txt'>Reviews</div>
         </div>
 
@@ -21,7 +21,7 @@ export default function UserHeader({userInfo}) {
           <div className='txt'>City</div>
         </div>
         <div className='info'>
-          <div className='title'>{userInfo.state}</div>
+          <div className='title'>{userInfo.state ? userInfo.state : 'N/A'}</div>
           <div className='txt'>State</div>
         </div>
 

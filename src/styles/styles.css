@@ -1,5 +1,6 @@
 body {
   background-color: lightblue;
+  box-sizing: border-box;
 }
 body h1 {
   color: orange;
@@ -9,9 +10,10 @@ body h1 {
 ******* REVIEW *******
 */
 .review {
-  width: 800px;
+  margin-bottom: 10px;
+  width: 100%;
   display: grid;
-  grid-template-columns: 150px 600px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 600px));
   grid-template-rows: 25px 25px 25px 25px 25px auto auto 20px;
   border: solid 1px black;
   align-items: center;
@@ -222,10 +224,10 @@ button:hover {
 .profilePageBody {
   background: linear-gradient(360deg, #FD6F46 10%, #FB9832 360%);
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding: 50px 0;
   align-items: center;
 }
 .profilePageBody h1 {
@@ -236,7 +238,7 @@ button:hover {
   background-color: whitesmoke;
   border-radius: 15px;
   width: 80%;
-  min-height: 90vh;
+  min-height: 40vh;
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -250,6 +252,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin-bottom: 10px;
 }
 .userHeader img {
   border-radius: 50%;
@@ -268,7 +271,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 25px;
+  margin: 15px 0;
 }
 .userHeader .profileInfoContainer .info {
   padding: 5px 10px;
@@ -276,7 +279,7 @@ button:hover {
 }
 .userHeader .profileInfoContainer .info .title {
   font-weight: 700;
-  font-size: 27px;
+  font-size: 1.5em;
   color: #6944ff;
   color: #324e63;
 }
@@ -286,10 +289,16 @@ button:hover {
 }
 
 .reviewList {
-  height: 70%;
-  border-radius: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
 
+/*****************************************************
+********************* More Alec! *******************
+******************************************************/
 .star {
   position: relative;
   bottom: 15px;
