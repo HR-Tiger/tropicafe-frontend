@@ -9,7 +9,10 @@ export default function Shop({ shop }) {
       <div className='cardContainer card'>
         <img className="img-fluid" src={'http://dummyimage.com/101x100.png/cc0000/ffffff'} />
         <div className="card-body">
-          <Link to={`/shop/${shop.shop_id}`}><h3 className='card-title'>{shop.name}</h3></Link>
+          <Link to={{
+            pathname: `/shop/${shop.shop_id}`,
+            state: {shop: shop}
+          }}><h3 className='card-title'>{shop.name}</h3></Link>
 
           <div className="card-body">
             <StarRating Rating={shop.avg_rating} />

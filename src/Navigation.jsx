@@ -13,7 +13,7 @@ import AuthPage from './components/auth/AuthPage.jsx';
 import Shop from './components/shop/Shop.jsx';
 import UserPage from './components/user/UserPage.jsx';
 import ShopPage from './components/shop/ShopPage.jsx';
-import Review from './shared-components/Review.jsx';
+import ReviewList from './shared-components/ReviewList.jsx';
 
 export default function Navigation() {
   const linkStyle = {margin: '5px'};
@@ -67,18 +67,19 @@ export default function Navigation() {
           <UserPage />
         </Route>
 
-        <Route path="/shop">
+        {/* <Route path="/shop">
           <ShopPage />
+        </Route> */}
+
+        <Route path="/reviews">
+          <ReviewList />
         </Route>
 
-        {/* <Route path="/reviews">
-          <Review />
-        </Route> */}
 
         {/* The variable will just be the shop id */}
-        {/* <Route path="shop/:id">
-          <Shop />
-        </Route> */}
+        <Route path="/shop/:id" component={ShopPage} />
+
+        <Route path="/user/:id" components={UserPage} />
 
         {/* <Route path="user/:id">
           <UserPage />

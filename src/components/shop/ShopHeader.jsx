@@ -1,29 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
-let shop = {
-  'shop_id': 1,
-  'name': 'sit',
-  'address': '2 Reinke Road',
-  'city': 'Naples',
-  'state': 'FL',
-  'zip': 112,
-  'date': '1604901282000',
-  'phone_number': '239-398-1215',
-  'website': 'https://bing.com',
-  'animal_friendly': true,
-  'price': 3,
-  'photos': [
-    {
-      'url': 'http://dummyimage.com/300X300.png/cc0000/ffffff'
-    },
-    {
-      'url': 'http://dummyimage.com/235x100.png/ff4444/ffffff'
-    },
-    {
-      'url': 'http://dummyimage.com/212x100.png/cc0000/ffffff'
-    }
-  ]
-};
+import StarRating from './StarRating.jsx';
+import AddReview from './AddReview.jsx';
+import comingSoon from '../../../dist/coming-soon.jpg';
 
 const style = {
   display: 'flex',
@@ -32,7 +10,8 @@ const style = {
   alignItems: 'center'
 };
 
-export default function ShopHeader() {
+export default function ShopHeader({ shop }) {
+  const [showModal, setShowModal] = useState(false);
 
   const displayPrice = () => {
     let mapper = Array.from({length: shop.price}, (v, i) => i);
@@ -46,20 +25,24 @@ export default function ShopHeader() {
     });
   };
 
+  // Just so it isn't 100 characters long
+  shop.website = shop.website.slice(0, 20);
+
+  var imageURL = shop.photos ? shop.photos[0].url : comingSoon;
+
   return (
     <div className="container">
-      <div className="row">
-        <div className="col">
-          <img
-            src={shop.photos[0].url}
-            className="rounded float-start"
-            alt={`${shop.name} photo`}
-          />
-        </div>
-        <div className="col">
-          <div className="card" style={{width: '18rem'}}>
-            <div className="card-body">
-              <h5 className="card-title">{shop.name}</h5>
+      <div className="row mb-2">
+        <div className="col-md-6">
+          <div className="card flex-lg-row mb-4 p-4 box-shadow h-md-250">
+            <img
+              src={imageURL}
+              className="card-img-left flex-auto d-none d-md-block rounded"
+              alt={`${shop.name} photo`}
+            />
+            <div className="card-body d-flex flex-column align-items-start">
+              <h1 className="display-3">Bill's Coffee</h1>
+              <StarRating Rating={shop.avg_rating} />
               {shop.price && (
                 <div>
                   {displayPrice()}
@@ -72,34 +55,34 @@ export default function ShopHeader() {
                 </div>
               )}
             </div>
+          </div>
+        </div>
+        <div className="col-sm-6">
+          <div className="card" style={{width: '18rem'}}>
+            <div className="card-body">
+              <h4>Contact:</h4>
+            </div>
             <ul className="list-group list-group-flush">
               <li className="list-group-item">{shop.phone_number}</li>
-              <li className="list-group-item">{shop.address} {shop.city}, {shop.state} {shop.zip}</li>
+              <li className="list-group-item">
+                <a
+                  href={`http://maps.google.com/?q=${shop.address} ${shop.city}, ${shop.state} ${shop.zip}`}
+                  target="_blank">
+                    Get directions
+                </a>
+                <br></br>
+                {shop.address} {shop.city}, {shop.state} {shop.zip}
+              </li>
               <li className="list-group-item card-link">{shop.website}</li>
             </ul>
           </div>
+          <button className="btn btn-outline-primary my-3 sm-button" onClick={() => setShowModal(true)}>Add a review</button>
         </div>
       </div>
+
+      {showModal && <AddReview shopId={shop.shop_id} setShowModal={setShowModal} />}
+
     </div>
   );
 }
-
-
-
-// {
-//   id,
-//   name,
-//   location: {
-//     address,
-//     city,
-//     state,
-//     zip
-//   }
-//   phone_number,
-//   price
-//   website,
-//   animal_friendly
-//   reviews,
-//   rating
-// }
 
