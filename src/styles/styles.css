@@ -186,6 +186,9 @@ button:hover {
   width: 80%;
   margin: 10px auto;
 }
+.popularShopsContainer h2 {
+  color: black;
+}
 
 .modalWrapper {
   background: rgba(0, 0, 0, 0.7);
@@ -234,6 +237,7 @@ button:hover {
   width: 175px;
   position: absolute;
   background-color: white;
+
 }
 
 /*****************************************************
