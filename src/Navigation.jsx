@@ -32,24 +32,21 @@ export default function Navigation() {
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="">
+          <div className="collapse navbar-collapse justify-content-md-center">
             <div className="navbar-nav">
               <Link className="nav-link" to="/">Home</Link>
-
               <Link className="nav-link" to={{
                 pathname: '/login',
                 state: { type: 'login' }
               }}>
                 Login
               </Link>
-
               <Link className="nav-link" to={{
                 pathname: 'signup',
                 state: { type: 'registration' }
               }}>
                 Sign Up
               </Link>
-
               <Link className="nav-link" to="/user">My profile</Link>
             </div>
           </div>
