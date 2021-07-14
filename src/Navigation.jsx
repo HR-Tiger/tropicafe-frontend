@@ -51,7 +51,7 @@ export default function Navigation() {
               </Link> }
               {isAuth() && <Link className="nav-link" to="/user">My profile</Link> }
 
-              {isAuth() && <button onClick={e => {logout()}}>LOGOUT</button>}
+              {isAuth() && <button onClick={e => logout()}>LOGOUT</button>}
             </div>
           </div>
         </div>
