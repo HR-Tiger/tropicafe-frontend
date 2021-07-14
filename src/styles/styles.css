@@ -179,14 +179,14 @@ button:hover {
 /*****************************************************
 ********************* ALEC ***************************
 ******************************************************/
-.popularShopsContainer {
+.popularShopsContainer, .recentShopsContainer {
   background-color: whitesmoke;
   border-radius: 10px;
   padding: 5px;
   width: 80%;
   margin: 10px auto;
 }
-.popularShopsContainer h2 {
+.popularShopsContainer h2, .recentShopsContainer h2 {
   color: black;
 }
 
@@ -237,7 +237,6 @@ button:hover {
   width: 175px;
   position: absolute;
   background-color: white;
-
 }
 
 /*****************************************************
@@ -344,6 +343,8 @@ button:hover {
 .homeContainer {
   background-image: url("/storage/bg2.jpg");
   background-size: cover;
+  background-position: center;
+  min-height: 100vh;
 }
 
 .recent-title {
