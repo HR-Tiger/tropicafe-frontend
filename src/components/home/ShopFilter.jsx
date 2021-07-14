@@ -4,49 +4,144 @@ import '../../styles/styles.css';
 
 export default function ShopFilter() {
   const [toggleOpenFilter, setToggleOpenFilter] = useState(false);
+  const [toggleOpenRating, setToggleOpenRating] = useState(false);
+  const [toggleOpenPrice, setToggleOpenPrice] = useState(false);
+  const [toggleOpenPet, setToggleOpenPet] = useState(false);
   const [priceFilter, setPriceFilter] = useState('');
-
 
 
   return (
     <>
-      {toggleOpenFilter ? (<>
-        <div>
-          <button onClick={() => setToggleOpenFilter(false)}>X</button>
-          <h3>Filter</h3>
-
-
-
-
-
-          <div className="col">
-            <label htmlfFor="price" className="form-label">Price Level</label>
-            <select multiple={true} value={priceFilter} onChange={(event) => setPriceFilter(event.target.value)}className="form-select">
-              <option value="">Select</option>
-              <option value="1">$</option>
-              <option value="2">$$ </option>
-              <option value="3">$$$ </option>
-              <option value="4">$$$$ </option>
-              <option value="5">$$$$$ </option>
-            </select>
-          </div>
-
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-            <label class="form-check-label" for="flexCheckDefault">
-              Pet Friendly
-            </label>
-          </div>
-
-        </div>
-      </>
-      ) : (
-        <>
+      <div className='filterWrapper'>
+        {toggleOpenFilter ? (<>
           <div>
-            <button onClick={() => setToggleOpenFilter(true)}>Filter</button>
+            <button onClick={() => setToggleOpenFilter(false)}>X</button>
+
+            {toggleOpenRating ? (<>
+              <div>
+                <button onClick={() => setToggleOpenRating(false)}>X</button>
+                <h6>Rating</h6>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    ⭐
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    ⭐⭐
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    ⭐⭐⭐
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    ⭐⭐⭐⭐
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    ⭐⭐⭐⭐⭐
+                  </label>
+                </div>
+              </div>
+            </>
+            ) : (
+              <>
+                <div>
+                  <button onClick={() => setToggleOpenRating(true)}>Rating</button>
+                </div>
+              </>)}
+
+            {toggleOpenPrice ? (<>
+              <div>
+                <button onClick={() => setToggleOpenPrice(false)}>X</button>
+                <h6>Price Range</h6>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    $
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    $$
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    $$$
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    $$$$
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    $$$$$
+                  </label>
+                </div>
+              </div>
+            </>
+            ) : (
+              <>
+                <div>
+                  <button onClick={() => setToggleOpenPrice(true)}>Price Range</button>
+                </div>
+              </>)}
+
+
+            {toggleOpenPet ? (<>
+              <div>
+                <button onClick={() => setToggleOpenPet(false)}>X</button>
+                <h6>Pet Friendly</h6>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Yes
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    No
+                  </label>
+                </div>
+              </div>
+            </>
+            ) : (
+              <>
+                <div>
+                  <button onClick={() => setToggleOpenPet(true)}>Pet Friendly</button>
+                </div>
+              </>)}
+
           </div>
-        </>)}
+        </>
+        ) : (
+          <>
+            <div>
+              <button onClick={() => setToggleOpenFilter(true)}>Filter</button>
+            </div>
+          </>)}
+      </div>
     </>
   );
 }
+
+
 
