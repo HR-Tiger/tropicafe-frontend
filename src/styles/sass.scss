@@ -264,7 +264,9 @@ button {
 }
 
 .filterWrapper {
-	width: 200px;
+	width: 175px;
+	position: absolute;
+	background-color: white;
 }
 
 /*****************************************************
@@ -392,7 +394,7 @@ right: 17px;
 }
 
 .popular-title {
-  color: white;
+  color: black;
   display: flex;
   align-content: center;
   justify-content: center;
