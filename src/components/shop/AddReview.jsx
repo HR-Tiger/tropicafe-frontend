@@ -29,6 +29,7 @@ export default function AddReview({ shopId, setShowModal }) {
   return (
     <div className="modalWrapper">
       <div className="modalContainer">
+        <button type="button" className="btn-close" aria-label="Close" onClick={() => setShowModal(false)}></button>
         <div className="row justify justify-content-center">
           <form onSubmit={handleSubmit}>
             <div className="row mt-0">
@@ -86,11 +87,21 @@ export default function AddReview({ shopId, setShowModal }) {
             <div className="mb-3">
               <button type="submit" className="btn btn-primary sm-button">Submit</button>
               {!isSubmitted && (
-                <button className="btn btn-primary ms-3 sm-button" onClick={() => setShowModal(false)}>Cancel</button>
+                <button
+                  className="btn btn-primary ms-3 sm-button"
+                  type="button"
+                  onClick={() => setShowModal(false)}>
+                    Cancel
+                </button>
               )}
               { isSubmitted && (
                 <>
-                  <button className="btn btn-primary mx-3 sm-button" onClick={() => setShowModal(false)}>Close</button>
+                  <button
+                    className="btn btn-primary mx-3 sm-button"
+                    type="button"
+                    onClick={() => setShowModal(false)}>
+                      Close
+                  </button>
                   <span>Thanks for your review!</span>
                 </>
               )}
