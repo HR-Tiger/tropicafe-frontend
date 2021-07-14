@@ -166,6 +166,7 @@ button:hover {
   background-size: cover;
   background-position: center;
   min-height: 100vh;
+  padding: 5px;
 }
 
 .recent-title {
@@ -358,4 +359,24 @@ body, html {
   box-sizing: border-box;
   margin: 0;
   height: 100%;
+}
+
+/*****************************************************
+********************* SEARCH BAR ***********
+******************************************************/
+.searchWrapper {
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 20px;
+  height: 40px;
+  width: 50%;
+  box-shadow: 0 2px 6px 0 rgba(140, 150, 170, 0.2), 0 24px 20px -24px rgba(71, 82, 107, 0.1);
+  overflow: hidden;
+  background: white;
+}
+.searchWrapper input {
+  border: none;
+  outline: none;
+  padding: 0 20px;
+  font-size: 16px;
 }

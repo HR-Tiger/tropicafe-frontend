@@ -70,14 +70,14 @@ background-color: white;
   position: relative;
   bottom: 15px;
   right: 17px;
-  }
+}
 
-  .dark-star, .rating-star {
+.dark-star, .rating-star {
     color: pink;
     width: 80px;
     height: 20px;
     position: absolute;
-  }
+}
 
   .addShopButton {
     width: 150px;
@@ -88,6 +88,7 @@ background-color: white;
     background-size: cover;
     background-position: center;
     min-height: 100vh;
+    padding: 5px;
   }
 
   .recent-title {
