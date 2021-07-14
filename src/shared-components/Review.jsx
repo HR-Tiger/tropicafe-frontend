@@ -20,7 +20,7 @@ const Review = ( { review, type } ) => {
           setShop(data.data[0]);
         })
         .catch(err => {
-          consoel.log(err);
+          console.log(err);
         });
     }, []);
   }
@@ -49,31 +49,33 @@ const Review = ( { review, type } ) => {
           });
       })
       .catch ((err) => {
-        consoel.log(err);
+        console.log(err);
       });
   };
 
   if (type === 'shop') {
-    console.log('hi', review.shop_id);
+    // console.log('hi', review.shop_id);
     if (review.user[0].profile_photo_url === null) {
       var profile_pic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
     } else {
       var profile_pic = review.user[0].profile_photo_url;
     }
-    var username = review.user[0].first_name;
     var pathName = `/user/${review.user_id}`;
+    console.log(pathName);
+    var username = review.user[0].first_name;
     var location = `${review.user[0].city}, ${review.user[0].state}`;
   } else {
-    console.log('hey', shop.shop_id);
-    if (shop.photos === undefined) {
+    // console.log('hey', shop.photos);
+    if (shop.photos === null || shop.photos === undefined) {
       var profile_pic = 'https://www.whitevilla.co.uk/img/missing_product.png';
     } else {
       var profile_pic = shop.photos[0].url;
-      console.log(shop.photos[0]);
     }
-    // var profile_pic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
     var username = shop.name;
-    var pathName = `/shop/${shop.shop_id}`;
+    var pathName = {
+      pathname: `/shop/${shop.shop_id}`,
+      state: {shop: shop}
+    };
     var location = `${shop.city}, ${shop.state}`;
   }
 
