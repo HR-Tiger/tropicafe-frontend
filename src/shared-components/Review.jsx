@@ -5,9 +5,9 @@ import axios from 'axios';
 
 const Review = ( { review, type } ) => {
 
-  console.log(review);
+  // console.log(review);
 
-  console.log(type);
+  // console.log(type);
 
   const [helpfulness, setHelpfulness] = useState(review.helpfulness_count);
   const [shop, setShop] = useState({});
@@ -16,7 +16,7 @@ const Review = ( { review, type } ) => {
     useEffect (() => {
       axios.get(`http://3.239.52.75/api/shops/${review.shop_id}`)
         .then (data => {
-          console.log(data.data[0]);
+          // console.log(data.data[0]);
           setShop(data.data[0]);
         })
         .catch(err => {
@@ -61,7 +61,7 @@ const Review = ( { review, type } ) => {
       var profile_pic = review.user[0].profile_photo_url;
     }
     var pathName = `/user/${review.user_id}`;
-    console.log(pathName);
+    // console.log(pathName);
     var username = review.user[0].first_name;
     var location = `${review.user[0].city}, ${review.user[0].state}`;
   } else {
