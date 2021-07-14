@@ -41,7 +41,7 @@ export default function ShopHeader({ shop }) {
               alt={`${shop.name} photo`}
             />
             <div className="card-body d-flex flex-column align-items-start">
-              <h1 className="display-3">Bill's Coffee</h1>
+              <h1 className="display-3">{shop.name}</h1>
               <StarRating Rating={shop.avg_rating} />
               {shop.price && (
                 <div>
