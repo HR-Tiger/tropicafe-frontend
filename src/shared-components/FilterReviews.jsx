@@ -30,7 +30,7 @@ export default function FilterReviews({ setReviewList }) {
 
   return (
     <>
-      <div className="card position-sticky my-3" style={{width: '15rem'}}>
+      <div className="card position-sticky my-3 h-25" style={{width: '15rem'}}>
         <form>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
@@ -83,7 +83,7 @@ export default function FilterReviews({ setReviewList }) {
             </li>
             <li className="list-group-item">
               <input
-                className="btn btn-primary"
+                className="btn btn-primary me-3"
                 type="submit"
                 value="Update"
                 onClick={handleSubmit}
