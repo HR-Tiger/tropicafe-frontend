@@ -3,6 +3,7 @@ import ShopList from '../shop/ShopList.jsx';
 import AddShopModal from './AddShopModal.jsx';
 import ShopFilter from './ShopFilter.jsx';
 import axios from 'axios';
+import SearchBar from '../../shared-components/SearchBar.jsx';
 import '../../styles/styles.css';
 export default function Home() {
 
@@ -38,10 +39,12 @@ export default function Home() {
   return (
     <>
       <div className='homeContainer'>
+        <SearchBar />
         <div className='homeHeader'>
           <button className='addShopButton' onClick={(event) => { toggleAddShopModal(event, true); }}>Add Shop</button>
           <ShopFilter/>
         </div>
+
         <div className='popularShopsContainer'>
           {seeMorePopular ? (<>
             <h2 className='popular-title'>Popular Coffee Shops</h2>
