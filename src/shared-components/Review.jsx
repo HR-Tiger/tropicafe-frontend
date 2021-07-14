@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import StarRating from '../components/shop/StarRating.jsx';
 import axios from 'axios';
 
@@ -53,15 +54,17 @@ const Review = ( { review, type } ) => {
   };
 
   if (type === 'shop') {
+    console.log('hi', review.shop_id);
     if (review.user[0].profile_photo_url === null) {
       var profile_pic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
     } else {
       var profile_pic = review.user[0].profile_photo_url;
     }
     var username = review.user[0].first_name;
+    var pathName = `/user/${review.user_id}`;
     var location = `${review.user[0].city}, ${review.user[0].state}`;
   } else {
-    // console.log(shop.photos);
+    console.log('hey', shop.shop_id);
     if (shop.photos === undefined) {
       var profile_pic = 'https://www.whitevilla.co.uk/img/missing_product.png';
     } else {
@@ -70,6 +73,7 @@ const Review = ( { review, type } ) => {
     }
     // var profile_pic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
     var username = shop.name;
+    var pathName = `/shop/${shop.shop_id}`;
     var location = `${shop.city}, ${shop.state}`;
   }
 
@@ -77,7 +81,7 @@ const Review = ( { review, type } ) => {
   return (
     <div className='review'>
       <img src={profile_pic} className="pic" alt="..."></img>
-      <div className='username'>{username}</div>
+      <Link to={pathName}><div className='username'>{username}</div></Link>
       <div className='location'>{location}</div>
       <div className='rating'>
         <StarRating Rating={review.rating}/>
