@@ -14,6 +14,8 @@ import Shop from './components/shop/Shop.jsx';
 import UserPage from './components/user/UserPage.jsx';
 import ShopPage from './components/shop/ShopPage.jsx';
 import ReviewList from './shared-components/ReviewList.jsx';
+import isAuth from './lib/isAuth.js';
+import logout from './lib/logout.js';
 
 export default function Navigation() {
   const linkStyle = {margin: '5px'};
@@ -35,19 +37,21 @@ export default function Navigation() {
           <div className="collapse navbar-collapse justify-content-md-center">
             <div className="navbar-nav">
               <Link className="nav-link" to="/">Home</Link>
-              <Link className="nav-link" to={{
+              { !isAuth() && <Link className="nav-link" to={{
                 pathname: '/login',
                 state: { type: 'login' }
               }}>
                 Login
-              </Link>
-              <Link className="nav-link" to={{
+              </Link> }
+              { !isAuth() && <Link className="nav-link" to={{
                 pathname: 'signup',
                 state: { type: 'registration' }
               }}>
                 Sign Up
-              </Link>
-              <Link className="nav-link" to="/user">My profile</Link>
+              </Link> }
+              {isAuth() && <Link className="nav-link" to="/user">My profile</Link> }
+
+              {isAuth() && <button onClick={e => {logout()}}>LOGOUT</button>}
             </div>
           </div>
         </div>
