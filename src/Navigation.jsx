@@ -25,27 +25,38 @@ export default function Navigation() {
 
       {/* These are individual links that lead to the defined path
           This what we will use anywhere we have a link */}
-      <Link style={linkStyle} to="/">Home</Link>
 
-      <Link style={linkStyle} to={{
-        pathname: '/login',
-        state: { type: 'login' }
-      }}>
-        Login
-      </Link>
+      <div className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <Link className="navbar-brand" to="/">TropiCafè</Link>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse justify-content-md-center">
+            <div className="navbar-nav">
+              <Link className="nav-link" to="/">Home</Link>
+              <Link className="nav-link" to={{
+                pathname: '/login',
+                state: { type: 'login' }
+              }}>
+                Login
+              </Link>
+              <Link className="nav-link" to={{
+                pathname: 'signup',
+                state: { type: 'registration' }
+              }}>
+                Sign Up
+              </Link>
+              <Link className="nav-link" to="/user">My profile</Link>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <Link style={linkStyle} to={{
-        pathname: 'signup',
-        state: { type: 'registration' }
-      }}>
-        Sign Up
-      </Link>
 
-      <Link style={linkStyle} to="/user">My profile</Link>
+      {/* <Link style={linkStyle} to="/shop">Shop</Link>
 
-      <Link style={linkStyle} to="/shop">Shop</Link>
-
-      <Link style={linkStyle} to="/reviews">Reviews</Link>
+      <Link style={linkStyle} to="/reviews">Reviews</Link> */}
 
       <Switch>
 
