@@ -231,7 +231,9 @@ button:hover {
 }
 
 .filterWrapper {
-  width: 200px;
+  width: 175px;
+  position: absolute;
+  background-color: white;
 }
 
 /*****************************************************
@@ -348,7 +350,7 @@ button:hover {
 }
 
 .popular-title {
-  color: white;
+  color: black;
   display: flex;
   align-content: center;
   justify-content: center;
