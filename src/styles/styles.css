@@ -1,96 +1,3 @@
-body, html {
-  overscroll-behavior: none;
-  box-sizing: border-box;
-  margin: 0;
-  height: 100%;
-}
-
-/*
-******* REVIEW *******
-*/
-.review {
-  margin-bottom: 10px;
-  max-width: 1000px;
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  grid-template-rows: 25px 25px 25px 25px 25px auto auto 20px;
-  border: solid 1px black;
-  align-items: center;
-  padding: 1em;
-  border-radius: 0.5em;
-  background: linear-gradient(360deg, #01a99c 10%, #0698b1 360%);
-  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
-  color: white;
-}
-.review .pic {
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row-start: 1;
-  grid-row-end: 5;
-  margin-top: 15px;
-  place-self: center;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-}
-.review .username {
-  grid-column-start: 2;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 1;
-}
-.review .location {
-  grid-column-start: 2;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 2;
-}
-.review .rating {
-  grid-column-start: 2;
-  grid-column-end: 2;
-  grid-row-start: 3;
-  grid-row-end: 3;
-  padding-left: 1em;
-}
-.review .date {
-  grid-column-start: 2;
-  grid-column-end: 2;
-  grid-row-start: 4;
-  grid-row-end: 4;
-}
-.review .review-text {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 6;
-  grid-row-end: 6;
-}
-.review .photos {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 7;
-  grid-row-end: 7;
-}
-.review .photos .photo {
-  width: 150px;
-  height: 150px;
-  padding: 5px;
-  border-radius: 0.5em;
-}
-.review .helpful {
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row-start: 8;
-  grid-row-end: 8;
-  width: 100px;
-  height: 25px;
-  padding: 0;
-  margin-top: 10px;
-  white-space: nowrap;
-}
-
-/*****************************************************
-********************* LOGIN / REGISTRATION ***********
-******************************************************/
 .authPageBody {
   display: flex;
   flex-direction: column;
@@ -176,17 +83,15 @@ button:hover {
   background: rgba(0, 0, 0, 0.4);
 }
 
-/*****************************************************
-********************* ALEC ***************************
-******************************************************/
-.popularShopsContainer {
+.popularShopsContainer, .recentShopsContainer {
   background-color: whitesmoke;
   border-radius: 10px;
   padding: 5px;
   width: 80%;
   margin: 10px auto;
+  margin-bottom: 20px;
 }
-.popularShopsContainer h2 {
+.popularShopsContainer h2, .recentShopsContainer h2 {
   color: black;
 }
 
@@ -234,12 +139,62 @@ button:hover {
 }
 
 .filterWrapper {
-  width: 200px;
+  width: 175px;
+  position: absolute;
+  background-color: white;
 }
 
-/*****************************************************
-********************* USER PROFILE *******************
-******************************************************/
+.star {
+  position: relative;
+  bottom: 15px;
+  right: 17px;
+}
+
+.dark-star, .rating-star {
+  color: pink;
+  width: 80px;
+  height: 20px;
+  position: absolute;
+}
+
+.addShopButton {
+  width: 150px;
+}
+
+.homeContainer {
+  background-image: url("/storage/bg2.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+.recent-title {
+  color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.popular-title {
+  color: black;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.addForm {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.filterButton {
+  width: 150px;
+}
+
+.sm-button {
+  width: fit-content;
+}
+
 .profilePageBody {
   background: linear-gradient(360deg, #FD6F46 10%, #FB9832 360%);
   position: relative;
@@ -318,62 +273,89 @@ button:hover {
   padding: 10px;
 }
 
-/*****************************************************
-********************* More Alec! *******************
-******************************************************/
-.star {
-  position: relative;
-  bottom: 15px;
-  right: 17px;
-}
-
-.dark-star, .rating-star {
-  color: pink;
-  width: 80px;
-  height: 20px;
-  position: absolute;
-}
-
-.addShopButton {
-  width: 150px;
-}
-
-.homeContainer {
-  background-image: url("/storage/bg2.jpg");
-  background-size: cover;
-}
-
-.recent-title {
-  color: white;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-}
-
-.popular-title {
-  color: white;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-}
-
-.addForm {
+.review {
   margin-bottom: 10px;
-  margin-top: 10px;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-template-rows: 25px 25px 25px 25px 25px auto auto 20px;
+  border: solid 1px black;
+  align-items: center;
+  padding: 1em;
+  border-radius: 0.5em;
+  background: linear-gradient(360deg, #01a99c 10%, #0698b1 360%);
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.1);
+  color: white;
 }
-
-.popularShopsContainer {
-  margin-bottom: 30px;
+.review .pic {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 5;
+  margin-top: 15px;
+  place-self: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
 }
-
-.recentShopsContainer {
-  margin-bottom: 30px;
+.review .username {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
 }
-
-.filterButton {
+.review .location {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+.review .rating {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 3;
+  padding-left: 1em;
+}
+.review .date {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 4;
+  grid-row-end: 4;
+}
+.review .review-text {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 6;
+  grid-row-end: 6;
+}
+.review .photos {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 7;
+  grid-row-end: 7;
+}
+.review .photos .photo {
   width: 150px;
+  height: 150px;
+  padding: 5px;
+  border-radius: 0.5em;
+}
+.review .helpful {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 8;
+  grid-row-end: 8;
+  width: 100px;
+  height: 25px;
+  padding: 0;
+  margin-top: 10px;
+  white-space: nowrap;
 }
 
-.sm-button {
-  width: fit-content;
+body, html {
+  overscroll-behavior: none;
+  box-sizing: border-box;
+  margin: 0;
+  height: 100%;
 }
