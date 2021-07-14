@@ -1,9 +1,9 @@
-body {
-  background-color: lightblue;
+body, html {
+	overscroll-behavior: none;
 	box-sizing: border-box;
-  h1 {
-    color: orange;
-  }
+	margin: 0;
+	height: 100%;
+
 }
 
 /*
@@ -202,6 +202,15 @@ button {
 /*****************************************************
 ********************* ALEC ***************************
 ******************************************************/
+.popularShopsContainer {
+		background-color: whitesmoke;
+		border-radius: 10px;
+		padding: 5px;
+		width: 80%;
+		margin: 10px auto;
+}
+
+
 
 .modalWrapper {
   background: rgba(0,0,0,0.7);
@@ -266,6 +275,10 @@ button {
 	flex-direction: column;
 	padding: 50px 0;
 	align-items: center;
+
+	background-image: url('/storage/bg2.jpg');
+	background-size: cover;
+	background-position: center;
 
 	h1 {
 		color: purple;

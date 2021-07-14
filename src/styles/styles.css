@@ -1,9 +1,8 @@
-body {
-  background-color: lightblue;
+body, html {
+  overscroll-behavior: none;
   box-sizing: border-box;
-}
-body h1 {
-  color: orange;
+  margin: 0;
+  height: 100%;
 }
 
 /*
@@ -180,6 +179,14 @@ button:hover {
 /*****************************************************
 ********************* ALEC ***************************
 ******************************************************/
+.popularShopsContainer {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 5px;
+  width: 80%;
+  margin: 10px auto;
+}
+
 .modalWrapper {
   background: rgba(0, 0, 0, 0.7);
   z-index: 4;
@@ -238,6 +245,9 @@ button:hover {
   flex-direction: column;
   padding: 50px 0;
   align-items: center;
+  background-image: url("/storage/bg2.jpg");
+  background-size: cover;
+  background-position: center;
 }
 .profilePageBody h1 {
   color: purple;

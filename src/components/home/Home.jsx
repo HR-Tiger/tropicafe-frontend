@@ -38,7 +38,6 @@ export default function Home() {
   return (
     <>
       <div className='homeContainer'>
-        <h1 className='homeTitle'>TropiCafe</h1>
         <div className='homeHeader'>
           <button className='addShopButton' onClick={(event) => { toggleAddShopModal(event, true); }}>Add Shop</button>
           <ShopFilter/>

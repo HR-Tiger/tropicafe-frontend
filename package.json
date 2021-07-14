@@ -7,7 +7,10 @@
     "start": "nodemon index.js",
     "sass": "sass src/styles/sass.scss:src/styles/styles.css --watch --no-source-map",
     "build": "npx webpack -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:production": "webpack --mode=production",
+    "uglify:bundle": "uglifyjs ./dist/bundle.js -o foo.min.js -c -m",
+    "compress:bundle": ""
   },
   "repository": {
     "type": "git",

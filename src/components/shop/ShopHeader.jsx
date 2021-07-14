@@ -31,8 +31,8 @@ export default function ShopHeader({ shop }) {
   var imageURL = shop.photos ? shop.photos[0].url : comingSoon;
 
   return (
-    <div className="container">
-      <div className="row mb-2">
+    <div className="container mx-auto mt-5">
+      <div className="row justify-content-md-center mb-2">
         <div className="col-md-6">
           <div className="card flex-lg-row mb-4 p-4 box-shadow h-md-250">
             <img
@@ -41,7 +41,7 @@ export default function ShopHeader({ shop }) {
               alt={`${shop.name} photo`}
             />
             <div className="card-body d-flex flex-column align-items-start">
-              <h1 className="display-3">Bill's Coffee</h1>
+              <h1 className="display-3">{shop.name}</h1>
               <StarRating Rating={shop.avg_rating} />
               {shop.price && (
                 <div>
@@ -58,7 +58,7 @@ export default function ShopHeader({ shop }) {
           </div>
         </div>
         <div className="col-sm-6">
-          <div className="card" style={{width: '18rem'}}>
+          <div className="card" style={{width: '24rem'}}>
             <div className="card-body">
               <h4>Contact:</h4>
             </div>
@@ -70,10 +70,14 @@ export default function ShopHeader({ shop }) {
                   target="_blank">
                     Get directions
                 </a>
+                <i className="fas fa-external-link-alt position-absolute end-0 mx-3"></i>
                 <br></br>
                 {shop.address} {shop.city}, {shop.state} {shop.zip}
               </li>
-              <li className="list-group-item card-link">{shop.website}</li>
+              <li className="list-group-item card-link">
+                <a href={shop.website} target="_blank">{shop.website}</a>
+                <i className="fas fa-external-link-alt position-absolute end-0 mx-3"></i>
+              </li>
             </ul>
           </div>
           <button className="btn btn-outline-primary my-3 sm-button" onClick={() => setShowModal(true)}>Add a review</button>
