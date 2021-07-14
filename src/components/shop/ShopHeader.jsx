@@ -31,8 +31,8 @@ export default function ShopHeader({ shop }) {
   var imageURL = shop.photos ? shop.photos[0].url : comingSoon;
 
   return (
-    <div className="container">
-      <div className="row mb-2">
+    <div className="container mx-auto mt-5">
+      <div className="row justify-content-md-center mb-2">
         <div className="col-md-6">
           <div className="card flex-lg-row mb-4 p-4 box-shadow h-md-250">
             <img
