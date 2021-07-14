@@ -90,7 +90,7 @@ export default function Navigation() {
         {/* The variable will just be the shop id */}
         <Route path="/shop/:id" component={ShopPage} />
 
-        <Route path="/user/:id" components={UserPage} />
+        <Route path="/user/:id" component={UserPage} />
 
         {/* <Route path="user/:id">
           <UserPage />
