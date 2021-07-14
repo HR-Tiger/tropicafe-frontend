@@ -1,0 +1,85 @@
+.profilePageBody {
+	background: linear-gradient(360deg, #FD6F46 10%, #FB9832 360%);
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	padding: 50px 0;
+	align-items: center;
+
+	background-image: url('/storage/bg2.jpg');
+	background-size: cover;
+	background-position: center;
+
+	h1 {
+		color: purple;
+	}
+}
+
+.profileContainer {
+	background-color: whitesmoke;
+	border-radius: 15px;
+	width: 80%;
+	min-height: 40vh;
+	box-shadow: 2px 2px 20px rgba(0, 0, 0 ,0.5);
+}
+
+.userHeader {
+	background: url('/storage/profileHeader.jpg');
+	background-size: cover;
+	background-position: center;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	min-height: 30%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin-bottom: 10px;
+
+		img {
+			border-radius: 50%;
+			height: 150px;
+			width: 150px;
+			box-shadow: 2px 2px 20px rgba(255, 255, 255 ,0.4);
+		}
+
+	.profileInfoContainer {
+			padding: 15px;
+			background: whitesmoke;
+			border-radius: 7px;
+			min-height: 80%;
+			box-shadow: 2px 2px 20px rgba(0, 0, 0 ,0.5);
+			width: 400px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			margin: 15px 0;
+
+			.info {
+
+					padding: 5px 10px;
+					min-width: 150px;
+
+					.title {
+						font-weight: 700;
+								font-size: 1.5em;
+								color: #6944ff;
+								color: #324e63;
+					}
+
+					.txt {
+						font-weight: 500;
+						margin-top: 7px;
+					}
+			}
+	}
+}
+
+.reviewList {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+}
