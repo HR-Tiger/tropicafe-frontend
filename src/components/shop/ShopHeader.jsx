@@ -58,7 +58,7 @@ export default function ShopHeader({ shop }) {
           </div>
         </div>
         <div className="col-sm-6">
-          <div className="card" style={{width: '18rem'}}>
+          <div className="card" style={{width: '24rem'}}>
             <div className="card-body">
               <h4>Contact:</h4>
             </div>
@@ -70,10 +70,14 @@ export default function ShopHeader({ shop }) {
                   target="_blank">
                     Get directions
                 </a>
+                <i className="fas fa-external-link-alt position-absolute end-0 mx-3"></i>
                 <br></br>
                 {shop.address} {shop.city}, {shop.state} {shop.zip}
               </li>
-              <li className="list-group-item card-link">{shop.website}</li>
+              <li className="list-group-item card-link">
+                <a href={shop.website} target="_blank">{shop.website}</a>
+                <i className="fas fa-external-link-alt position-absolute end-0 mx-3"></i>
+              </li>
             </ul>
           </div>
           <button className="btn btn-outline-primary my-3 sm-button" onClick={() => setShowModal(true)}>Add a review</button>
