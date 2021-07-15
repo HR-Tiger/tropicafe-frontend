@@ -4,9 +4,11 @@ import Login from './Login.jsx';
 import Registration from './Registration.jsx';
 import axios from 'axios';
 
+import { URL } from '../../config.js';
+
 export default function AuthPage(props) {
   const [isLogin, setIsLogin] = useState(false);
-  let baseUrl = 'http://3.239.52.75/api/';
+  let baseUrl = `http://${URL}/api/`;
 
   let registerFunc = (data) => {
     console.log('data: ', data);
