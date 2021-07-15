@@ -4,6 +4,9 @@ import StarRating from './StarRating.jsx';
 import { Link } from 'react-router-dom';
 
 export default function Shop({ shop }) {
+
+
+
   return (
     <>
       <div className='cardContainer card'>
@@ -11,7 +14,7 @@ export default function Shop({ shop }) {
         <div className="card-body">
           <Link to={{
             pathname: `/shop/${shop.shop_id}`,
-            state: {shop: shop}
+            state: { shop: shop }
           }}><h3 className='card-title'>{shop.name}</h3></Link>
 
           <div className="card-body">
@@ -22,7 +25,6 @@ export default function Shop({ shop }) {
           {shop.animal_friendly ? <p className="card-text">Pet Friendly ✅</p> : <p className="card-text">Pet Friendly 🚫 </p>}
         </div>
       </div>
-
 
     </>
   );

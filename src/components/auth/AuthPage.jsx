@@ -3,18 +3,20 @@ import { useLocation, useHistory } from 'react-router-dom';
 import Login from './Login.jsx';
 import Registration from './Registration.jsx';
 import axios from 'axios';
+import { endpoints } from '../../lib/endpoints.js';
 
 import { URL } from '../../config.js';
 
 export default function AuthPage({setUserId}) {
   const [isLogin, setIsLogin] = useState(false);
+  let baseUrl = `http://${URL}`;
   let history = useHistory();
-  let baseUrl = `http://${URL}/api/`;
 
   let registerFunc = (data) => {
     axios({
       method: 'post',
-      url: `${baseUrl}auth/register`,
+      url: `${baseUrl}${endpoints.postRegister}`,
+      // url: `${baseUrl}auth/register`,
       data: data,
     }).then((res)=> {
       let token = res.data.token;
@@ -28,7 +30,8 @@ export default function AuthPage({setUserId}) {
   const loginFunc = (data) => {
     axios({
       method: 'post',
-      url: `${baseUrl}auth/login`,
+      url: `${baseUrl}${endpoints.postLogin}`,
+      //url: `${baseUrl}auth/login`,
       data: data,
     }).then((res)=> {
       console.log('resData: ', res);

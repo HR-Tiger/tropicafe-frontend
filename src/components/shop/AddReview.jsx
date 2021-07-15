@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ImageInput from './ImageInput.jsx';
+import Star from '../../shared-components/Star.jsx';
 import { api } from '../../lib/api.js';
+import { endpoints } from '../../lib/endpoints.js';
+import { URL } from '../../config.js';
 
 export default function AddReview({ shopId, setShowModal }) {
+  const mapper = [1, 2, 3, 4, 5];
   const defaultValues = {
-    rating: '',
+    rating: 0,
     category: '',
     summary: '',
     description: ''
@@ -27,7 +31,6 @@ export default function AddReview({ shopId, setShowModal }) {
   ];
 
   const handleSubmit = (e) => {
-    console.log('does it work');
     e.preventDefault();
     setIsSubmitted(true);
     const formData = new FormData();
@@ -45,7 +48,7 @@ export default function AddReview({ shopId, setShowModal }) {
 
     const headers = {'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*'};
 
-    axios.post(`http://3.239.52.75/api/reviews/${shopId}`, formData, headers)
+    axios.post(`http://${URL}${endpoints.postReview}${shopId}`, formData, headers)
       .then(res => console.log(res))
       .catch(e => console.log(e));
 
@@ -64,7 +67,14 @@ export default function AddReview({ shopId, setShowModal }) {
                 <h4 className="">Add a review</h4>
               </div>
             </div>
-            {/* RATING COMPONENT */}
+            <div className="mb-3">
+              <label className="form-label">Rating</label>
+              <div className="mb-3">
+                {mapper.map((num, i) => (
+                  <Star key={i} i={i + 1} rating={review.rating} setReview={setReview} />
+                ))}
+              </div>
+            </div>
             <div className="form-group row">
               <div className="col">
                 <label className="form-label">Category</label>

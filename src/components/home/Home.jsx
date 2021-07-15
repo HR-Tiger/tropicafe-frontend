@@ -6,7 +6,7 @@ import axios from 'axios';
 import SearchBar from '../../shared-components/SearchBar.jsx';
 import '../../styles/styles.css';
 
-import {URL} from '../../config.js';
+import { URL } from '../../config.js';
 
 export default function Home() {
 
@@ -16,6 +16,7 @@ export default function Home() {
   const [allRecentShops, setallRecentShops] = useState([]);
   const [searchedShops, setSearchedShops] = useState([]);
   const [seeMoreRecent, setSeeMoreRecent] = useState(false);
+  const [seeMoreSearched, setSeeMoreSearched] = useState(false);
   const [seeMorePopular, setSeeMorePopular] = useState(false);
   const [addShopModal, setAddShopModal] = useState(false);
 
@@ -24,7 +25,7 @@ export default function Home() {
       .then(res => {
         setallPopularShops(res.data);
         setPopularShops(res.data.slice(0, 3));
-        console.log(res.data);
+
       });
     axios.get(`http://${URL}/api/recentShops`)
       .then(res => {
@@ -46,36 +47,58 @@ export default function Home() {
         <SearchBar setSearchedShops={setSearchedShops} />
         <div className='homeHeader'>
           <button className='addShopButton' onClick={(event) => { toggleAddShopModal(event, true); }}>Add Shop</button>
-          <ShopFilter/>
+          <ShopFilter />
         </div>
 
-        <div className='popularShopsContainer'>
-          {seeMorePopular ? (<>
-            <h2 className='popular-title'>Popular Coffee Shops</h2>
-            <ShopList ShopList={allPopularShops} />
-            <button onClick={() => setSeeMorePopular(false)}>See Less</button>
+        <div className=''>
+          {(searchedShops.length > 0) ? (<>
+
+            <div className='searchedShopsContainer'>
+              {seeMoreSearched ? (
+                <>
+                  <h2 className='recent-title'>Results for {searchedShops[0].city}:</h2>
+                  <ShopList ShopList={searchedShops.slice(0, 9)} />
+                  <button onClick={() => setSeeMoreSearched(false)}>See Less</button>
+                </>
+              ) : (
+                <>
+                  <h2 className='recent-title'>Results for {searchedShops[0].city}:</h2>
+                  <ShopList ShopList={searchedShops.slice(0, 3)} />
+                  <button onClick={() => setSeeMoreSearched(true)}>See More Searched Shops</button>
+                </>)}
+            </div>
           </>
           ) : (
             <>
-              <h2 className='popular-title'>Popular Coffee Shops</h2>
-              <ShopList ShopList={popularShops} />
-              <button onClick={() => setSeeMorePopular(true)}>See More Popular Shops</button>
+              <div className='popularShopsContainer'>
+                {seeMorePopular ? (<>
+                  <h2 className='popular-title'>Popular Coffee Shops</h2>
+                  <ShopList ShopList={allPopularShops} />
+                  <button onClick={() => setSeeMorePopular(false)}>See Less</button>
+                </>
+                ) : (
+                  <>
+                    <h2 className='popular-title'>Popular Coffee Shops</h2>
+                    <ShopList ShopList={popularShops} />
+                    <button onClick={() => setSeeMorePopular(true)}>See More Popular Shops</button>
 
-            </>)}
-        </div>
+                  </>)}
+              </div>
 
-        <div className='recentShopsContainer'>
-          {seeMoreRecent ? (
-            <>
-              <h2 className='recent-title'>Recently Added Coffee Shops</h2>
-              <ShopList ShopList={allRecentShops} />
-              <button onClick={() => setSeeMoreRecent(false)}>See Less</button>
-            </>
-          ) : (
-            <>
-              <h2 className='recent-title'>Recently Added Coffee Shops</h2>
-              <ShopList ShopList={recentShops} />
-              <button onClick={() => setSeeMoreRecent(true)}>See More Recent Shops</button>
+              <div className='recentShopsContainer'>
+                {seeMoreRecent ? (
+                  <>
+                    <h2 className='recent-title'>Recently Added Coffee Shops</h2>
+                    <ShopList ShopList={allRecentShops} />
+                    <button onClick={() => setSeeMoreRecent(false)}>See Less</button>
+                  </>
+                ) : (
+                  <>
+                    <h2 className='recent-title'>Recently Added Coffee Shops</h2>
+                    <ShopList ShopList={recentShops} />
+                    <button onClick={() => setSeeMoreRecent(true)}>See More Recent Shops</button>
+                  </>)}
+              </div>
             </>)}
         </div>
 
