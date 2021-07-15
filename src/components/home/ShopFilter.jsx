@@ -107,132 +107,137 @@ export default function ShopFilter() {
   return (
     <>
       <div className='filterWrapper'>
-        {toggleOpenFilter ? (<>
-          <div>
-            <button onClick={() => setToggleOpenFilter(false)}>X</button>
 
-            {toggleOpenRating ? (<>
-              <div>
-                <button onClick={() => setToggleOpenRating(false)}>X</button>
-                <h6>Rating</h6>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="1" id="1star" checked={isOneStarChecked} onChange={handleOneStarChange} />
-                  <label className="form-check-label" htmlFor="flexCheckDefault">
-                    ⭐
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="2" id="2star" checked={isTwoStarChecked} onChange={handleTwoStarChange} />
-                  <label className="form-check-label" htmlFor="flexCheckDefault">
-                    ⭐⭐
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="3" id="3star" checked={isThreeStarChecked} onChange={handleThreeStarChange} />
-                  <label className="form-check-label" htmlFor="flexCheckDefault">
-                    ⭐⭐⭐
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="4" id="4star" checked={isFourStarChecked} onChange={handleFourStarChange} />
-                  <label className="form-check-label" htmlFor="flexCheckDefault">
-                    ⭐⭐⭐⭐
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="5" id="5star" checked={isFiveStarChecked} onChange={handleFiveStarChange} />
-                  <label className="form-check-label" htmlFor="flexCheckDefault">
-                    ⭐⭐⭐⭐⭐
-                  </label>
+        <div className="accordion" id="accordionExample">
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="headingOne">
+              <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Filter
+              </button>
+            </h2>
+            <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div className="accordion-body">
+
+                <div>
+
+                  {toggleOpenRating ? (<>
+                    <div>
+                      <button onClick={() => setToggleOpenRating(false)}>X</button>
+                      <h6>Rating</h6>
+                      <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="1" id="1star" checked={isOneStarChecked} onChange={handleOneStarChange} />
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                          ⭐
+                        </label>
+                      </div>
+                      <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="2" id="2star" checked={isTwoStarChecked} onChange={handleTwoStarChange} />
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                          ⭐⭐
+                        </label>
+                      </div>
+                      <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="3" id="3star" checked={isThreeStarChecked} onChange={handleThreeStarChange} />
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                          ⭐⭐⭐
+                        </label>
+                      </div>
+                      <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="4" id="4star" checked={isFourStarChecked} onChange={handleFourStarChange} />
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                          ⭐⭐⭐⭐
+                        </label>
+                      </div>
+                      <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="5" id="5star" checked={isFiveStarChecked} onChange={handleFiveStarChange} />
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                          ⭐⭐⭐⭐⭐
+                        </label>
+                      </div>
+                    </div>
+                  </>
+                  ) : (
+                    <>
+                      <div>
+                        <button onClick={() => setToggleOpenRating(true)}>Rating</button>
+                      </div>
+                    </>)}
+
+                  {toggleOpenPrice ? (<>
+                    <div>
+                      <button onClick={() => setToggleOpenPrice(false)}>X</button>
+                      <h6>Price Range</h6>
+                      <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="1" id="1price" checked={isOnePriceChecked} onChange={handleOnePriceChange} />
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                          $
+                        </label>
+                      </div>
+                      <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="2" id="2price" checked={isTwoPriceChecked} onChange={handleTwoPriceChange} />
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                          $$
+                        </label>
+                      </div>
+                      <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="3" id="3price" checked={isThreePriceChecked} onChange={handleThreePriceChange} />
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                          $$$
+                        </label>
+                      </div>
+                      <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="4" id="4price" checked={isFourPriceChecked} onChange={handleFourPriceChange} />
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                          $$$$
+                        </label>
+                      </div>
+                      <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="5" id="5price" checked={isFivePriceChecked} onChange={handleFivePriceChange} />
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                          $$$$$
+                        </label>
+                      </div>
+                    </div>
+                  </>
+                  ) : (
+                    <>
+                      <div>
+                        <button onClick={() => setToggleOpenPrice(true)}>Price Range</button>
+                      </div>
+                    </>)}
+
+
+                  {toggleOpenPet ? (<>
+                    <div>
+                      <button onClick={() => setToggleOpenPet(false)}>X</button>
+                      <h6>Pet Friendly</h6>
+                      <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="true" id="petTrue" checked={isPetTrueChecked} onChange={handlePetTrueChange} />
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                          Yes
+                        </label>
+                      </div>
+
+                      <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="false" id="petFalse" checked={isPetFalseChecked} onChange={handlePetFalseChange} />
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                          No
+                        </label>
+                      </div>
+                    </div>
+                  </>
+                  ) : (
+                    <>
+                      <div>
+                        <button onClick={() => setToggleOpenPet(true)}>Pet Friendly</button>
+                      </div>
+                    </>)}
+                  <button onClick={() => updateFilter()}>Update</button>
                 </div>
               </div>
-            </>
-            ) : (
-              <>
-                <div>
-                  <button onClick={() => setToggleOpenRating(true)}>Rating</button>
-                </div>
-              </>)}
-
-            {toggleOpenPrice ? (<>
-              <div>
-                <button onClick={() => setToggleOpenPrice(false)}>X</button>
-                <h6>Price Range</h6>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="1" id="1price" checked={isOnePriceChecked} onChange={handleOnePriceChange} />
-                  <label className="form-check-label" htmlFor="flexCheckDefault">
-                    $
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="2" id="2price" checked={isTwoPriceChecked} onChange={handleTwoPriceChange} />
-                  <label className="form-check-label" htmlFor="flexCheckDefault">
-                    $$
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="3" id="3price" checked={isThreePriceChecked} onChange={handleThreePriceChange} />
-                  <label className="form-check-label" htmlFor="flexCheckDefault">
-                    $$$
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="4" id="4price" checked={isFourPriceChecked} onChange={handleFourPriceChange} />
-                  <label className="form-check-label" htmlFor="flexCheckDefault">
-                    $$$$
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="5" id="5price" checked={isFivePriceChecked} onChange={handleFivePriceChange} />
-                  <label className="form-check-label" htmlFor="flexCheckDefault">
-                    $$$$$
-                  </label>
-                </div>
-              </div>
-            </>
-            ) : (
-              <>
-                <div>
-                  <button onClick={() => setToggleOpenPrice(true)}>Price Range</button>
-                </div>
-              </>)}
-
-
-            {toggleOpenPet ? (<>
-              <div>
-                <button onClick={() => setToggleOpenPet(false)}>X</button>
-                <h6>Pet Friendly</h6>
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="true" id="petTrue" checked={isPetTrueChecked} onChange={handlePetTrueChange} />
-                  <label className="form-check-label" htmlFor="flexCheckDefault">
-                    Yes
-                  </label>
-                </div>
-
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="false" id="petFalse" checked={isPetFalseChecked} onChange={handlePetFalseChange} />
-                  <label className="form-check-label" htmlFor="flexCheckDefault">
-                    No
-                  </label>
-                </div>
-              </div>
-            </>
-            ) : (
-              <>
-                <div>
-                  <button onClick={() => setToggleOpenPet(true)}>Pet Friendly</button>
-                </div>
-              </>)}
-            <button onClick={() => updateFilter()}>Update</button>
-          </div>
-        </>
-        ) : (
-          <>
-            <div>
-              <button onClick={() => setToggleOpenFilter(true)}>Filter</button>
             </div>
-          </>)}
-
+          </div>
+        </div>
       </div>
     </>
   );

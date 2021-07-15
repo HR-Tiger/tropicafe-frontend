@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/styles.css';
+import ImageInput from '../shop/ImageInput.jsx';
+
 
 export default function AddShopModal({ toggleAddShopModal }) {
   const [shopName, setShopName] = useState('');
@@ -9,25 +11,35 @@ export default function AddShopModal({ toggleAddShopModal }) {
   const [shopCity, setShopCity] = useState('');
   const [shopState, setShopState] = useState('');
   const [shopZip, setShopZip] = useState('');
-  const [shopPhoto, setShopPhoto] = useState('');
   const [shopWebsite, setShopWebsite] = useState('');
   const [shopPhone, setShopPhone] = useState('');
-
+  const [files, setFiles] = useState();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    let addShopData = {
-      name: shopName,
-      address: shopAddress,
-      city: shopCity,
-      state: shopState,
-      zip: shopZip,
-      phone_number: shopPhone,
-      price: parseInt(shopPrice),
-      website: shopWebsite,
-      animal_friendly: shopPetFriendly
-    };
-    console.log('form submitted', addShopData);
+    const formData = new FormData();
+    formData.append('name', shopName);
+    formData.append('address', shopAddress);
+    formData.append('city', shopCity);
+    formData.append('zip', shopZip);
+    formData.append('phone_number', shopPhone);
+    formData.append('price', parseInt(shopPrice));
+    formData.append('phone_number', shopPhone);
+    formData.append('website', shopWebsite);
+    formData.append('animal_friendly', shopPetFriendly);
+    formData.append('photos', files);
+
+    // for (var pair of formData.entries()) {
+    //   console.log(pair);
+    // }
+
+    const headers = { 'Content-Type': 'multipart/form-data' };
+
+    // axios.post(`${api}/reviews/${shopId}`, formData, headers)
+    //   .then(res => console.log(res))
+    //   .catch(e => console.log(e));
+
+    console.log('form submitted', formData);
     setShopName('');
     setShopPrice('');
     setShopAddress('');
@@ -35,9 +47,9 @@ export default function AddShopModal({ toggleAddShopModal }) {
     setShopCity('');
     setShopState('');
     setShopZip('');
-    setShopPhoto('');
     setShopWebsite('');
     setShopPhone('');
+    setFiles('');
     toggleAddShopModal(event, false);
     alert('Thank you for adding a shop to our page!');
   };
@@ -170,10 +182,7 @@ export default function AddShopModal({ toggleAddShopModal }) {
                 <input type="text" className="form-control" value={shopWebsite} onChange={(event) => setShopWebsite(event.target.value)} />
               </div>
 
-              <div className="col">
-                <label htmlFor="photos" className="form-label">Main Photo URL</label>
-                <input type="text" className="form-control" value={shopPhoto} onChange={(event) => setShopPhoto(event.target.value)} />
-              </div>
+              <ImageInput setFiles={setFiles} />
             </div>
 
             <input className="btn btn-primary" type="submit" value="Submit Shop" />
