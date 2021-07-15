@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Icons from './Icons.jsx';
+import { api } from '../lib/api.js';
+import { categories } from '../lib/categories';
 
 export default function FilterReviews({ setReviewList, type, id }) {
   const mapper = [1, 2, 3, 4, 5];
@@ -38,6 +40,10 @@ export default function FilterReviews({ setReviewList, type, id }) {
     );
   };
 
+  const handleClear = () => {
+
+  };
+
   const gatherFilters = filter => (
     Object.keys(filter)
       .filter(checkbox => filter[checkbox])
@@ -59,7 +65,7 @@ export default function FilterReviews({ setReviewList, type, id }) {
     });
   };
 
-  const api = 'http://3.239.52.75/api/';
+
   const endpoint = type === 'shop' ? (
     `shops/${id}/reviews`
   ) : (
@@ -83,17 +89,7 @@ export default function FilterReviews({ setReviewList, type, id }) {
   // app.get('/api/reviews/users/:id',
   // app.get('/api/shops/:id/reviews'
 
-  const categories = [
-    'Drip Brew',
-    'Latte',
-    'Cappuccino',
-    'Americano',
-    'Espresso',
-    'Mocha',
-    'Tea',
-    'Iced Coffee',
-    'Cold Brew'
-  ];
+
 
   const createCheckbox = (option, icon) => (
     <div className="checkbox" key={option}>
@@ -153,8 +149,7 @@ export default function FilterReviews({ setReviewList, type, id }) {
               <button
                 className="btn btn-primary sm-button"
                 type="button"
-                onClick={() => setFilters(defaultOptions)}
-              >
+                onClick={handleClear}>
                 Clear
               </button>
             </li>
