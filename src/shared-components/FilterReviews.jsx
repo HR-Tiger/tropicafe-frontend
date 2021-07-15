@@ -60,8 +60,13 @@ export default function FilterReviews({ setReviewList, type, id }) {
   };
 
   const api = 'http://3.239.52.75/api/';
-  let endpoint = type === 'shop' ? (`shops/${id}/reviews`) : (`reviews/users/${id}`);
+  const endpoint = type === 'shop' ? (
+    `shops/${id}/reviews`
+  ) : (
+    `reviews/users/${id}`
+  );
   const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
     if (isMounted) {
       axios.get(api + endpoint, filters)
