@@ -1,4 +1,4 @@
-let URL = 'localhost:3000';
+let URL = '3.239.52.75';
 
 export {
   URL
