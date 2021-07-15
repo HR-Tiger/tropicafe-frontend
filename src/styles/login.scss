@@ -1,0 +1,93 @@
+.authPageBody {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-image: url('/storage/bg2.jpg');
+	background-size: cover;
+	background-position: center;
+
+	h1 {
+		color: purple
+	}
+}
+
+.login {
+	font-family: inherit;
+	padding: 1em;
+	border-radius: 0.5em;
+	background: linear-gradient(360deg, #01a99c 10%, #0698b1 360%);
+	box-shadow: 0 0 16px 0 rgba(0,0,0,0.1);
+	position: relative;
+	display: flex;
+	justify-content: center;
+
+	h3 {
+		display: flex;
+		justify-content: space-between;
+		color: white;
+		.flipper {
+			opacity: 0.5;
+			cursor: pointer;
+
+			&:hover{
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.Input {
+	width: 16em;
+	padding: 0.4em;
+	margin-bottom: 1em;
+	border-radius: 0.2em;
+	background: rgba(255, 255, 255, 0.1);
+
+	&:hover {
+		background: rgba(255, 255, 255, 0.15);
+	}
+
+	label {
+		margin-bottom: -0.2em;
+		color: white;
+		font-size: 0.8em;
+		font-weight: 700;
+		display: block;
+	}
+
+	input {
+		font-family: inherit;
+		border: 0;
+		width: 15.2em;
+		font-size: 1em;
+		font-weight: 300;
+		background: none;
+		color: white;
+
+		&::placeholder {
+			color: rgba(255, 255, 255, 0.6);
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+}
+
+button {
+	font-family: inherit;
+	width: 100%;
+	font-size: 1em;
+	color: white;
+	border: none;
+	padding: 0.8em;
+	border-radius: 0.2em;
+	background: rgba(0, 0, 0, 0.2);
+	transition: background 0.2s ease-in-out;
+
+	&:hover {
+		background: rgba(0, 0, 0, 0.4);
+	}
+}
