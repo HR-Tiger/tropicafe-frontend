@@ -15,7 +15,6 @@ const ReviewList = ({ id, type }) => {
 
   let api = type === 'shop' ? `http://3.239.52.75/api/shops/${id}/reviews` : `http://3.239.52.75/api/reviews/users/${id}`;
 
-  // console.log(api);
 
   const getReview = (id => {
     axios.get(api)

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,6 +19,12 @@ import logout from './lib/logout.js';
 
 export default function Navigation() {
   const linkStyle = {margin: '5px'};
+  const [currentUsername, setCurrentUsername] = useState(null);
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    console.log('username: ', currentUsername);
+  }, [currentUsername]);
 
   return (
 
@@ -71,11 +77,11 @@ export default function Navigation() {
 
 
         <Route exact path="/login">
-          <AuthPage />
+          <AuthPage setCurrentUsername={setCurrentUsername} />
         </Route>
 
         <Route exact path="/signup">
-          <AuthPage />
+          <AuthPage setCurrentUsername={setCurrentUsername} />
         </Route>
 
         <Route path="/user">
