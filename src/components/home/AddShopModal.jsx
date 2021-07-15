@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/styles.css';
 import ImageInput from '../shop/ImageInput.jsx';
+import { URL } from '../../config.js';
+import axios from 'axios';
 
 
 export default function AddShopModal({ toggleAddShopModal }) {
@@ -24,7 +26,6 @@ export default function AddShopModal({ toggleAddShopModal }) {
     formData.append('zip', shopZip);
     formData.append('phone_number', shopPhone);
     formData.append('price', parseInt(shopPrice));
-    formData.append('phone_number', shopPhone);
     formData.append('website', shopWebsite);
     formData.append('animal_friendly', shopPetFriendly);
     formData.append('photos', files);
@@ -32,14 +33,14 @@ export default function AddShopModal({ toggleAddShopModal }) {
     // for (var pair of formData.entries()) {
     //   console.log(pair);
     // }
-
     const headers = { 'Content-Type': 'multipart/form-data' };
 
-    // axios.post(`${api}/reviews/${shopId}`, formData, headers)
-    //   .then(res => console.log(res))
-    //   .catch(e => console.log(e));
+    axios.post(`http://${URL}/api/shops`, formData, headers)
+      .then(res => console.log('add shop added', res))
+      .catch(e => console.log('addshop not working', e));
 
-    console.log('form submitted', formData);
+
+
     setShopName('');
     setShopPrice('');
     setShopAddress('');

@@ -67,18 +67,18 @@ export default function ShopFilter() {
   const updateFilter = () => {
 
     let priceArray = [];
-    isOnePriceChecked && priceArray.push('1');
-    isTwoPriceChecked && priceArray.push('2');
-    isThreePriceChecked && priceArray.push('3');
-    isFourPriceChecked && priceArray.push('4');
-    isFivePriceChecked && priceArray.push('5');
+    isOnePriceChecked && priceArray.push(1);
+    isTwoPriceChecked && priceArray.push(2);
+    isThreePriceChecked && priceArray.push(3);
+    isFourPriceChecked && priceArray.push(4);
+    isFivePriceChecked && priceArray.push(5);
 
     let ratingArray = [];
-    isOneStarChecked && ratingArray.push('1');
-    isTwoStarChecked && ratingArray.push('2');
-    isThreeStarChecked && ratingArray.push('3');
-    isFourStarChecked && ratingArray.push('4');
-    isFiveStarChecked && ratingArray.push('5');
+    isOneStarChecked && ratingArray.push(1);
+    isTwoStarChecked && ratingArray.push(2);
+    isThreeStarChecked && ratingArray.push(3);
+    isFourStarChecked && ratingArray.push(4);
+    isFiveStarChecked && ratingArray.push(5);
 
     let petBoolean = '';
     if (isPetTrueChecked === true && isPetFalseChecked === true) {
