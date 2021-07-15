@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ImageInput from './ImageInput.jsx';
 import { api } from '../../lib/api.js';
+import { endpoints } from '../../lib/endpoints.js';
+import { URL } from '../../config.js';
 
 export default function AddReview({ shopId, setShowModal }) {
   const [review, setReview] = useState({shop_id: shopId});
@@ -35,7 +37,7 @@ export default function AddReview({ shopId, setShowModal }) {
 
     const headers = {'Content-Type': 'multipart/form-data'};
 
-    axios.post(`${api}/reviews/${shopId}`, formData, headers)
+    axios.post(`http://${URL}${endpoints.postReview}${shopId}`, formData, headers)
       .then(res => console.log(res))
       .catch(e => console.log(e));
   };
