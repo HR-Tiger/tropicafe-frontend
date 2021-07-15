@@ -17,7 +17,6 @@ export default function AddReview({ shopId, setShowModal }) {
   const [review, setReview] = useState(defaultValues);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [files, setFiles] = useState();
-  // const [rating, setRating] = useState(0);
 
   const categories = [
     'Drip Brew',
