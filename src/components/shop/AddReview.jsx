@@ -69,9 +69,11 @@ export default function AddReview({ shopId, setShowModal }) {
             </div>
             <div className="mb-3">
               <label className="form-label">Rating</label>
-              {mapper.map((num, i) => (
-                <Star key={i} i={i + 1} rating={review.rating} setReview={setReview} />
-              ))}
+              <div className="mb-3">
+                {mapper.map((num, i) => (
+                  <Star key={i} i={i + 1} rating={review.rating} setReview={setReview} />
+                ))}
+              </div>
             </div>
             <div className="form-group row">
               <div className="col">
