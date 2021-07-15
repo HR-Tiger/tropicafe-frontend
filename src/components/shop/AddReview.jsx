@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ImageInput from './ImageInput.jsx';
+import Star from '../../shared-components/Star.jsx';
 import { api } from '../../lib/api.js';
 import { endpoints } from '../../lib/endpoints.js';
 import { URL } from '../../config.js';
 
 export default function AddReview({ shopId, setShowModal }) {
+  const mapper = [1, 2, 3, 4, 5];
   const defaultValues = {
-    rating: '',
+    rating: 0,
     category: '',
     summary: '',
     description: ''
@@ -15,6 +17,7 @@ export default function AddReview({ shopId, setShowModal }) {
   const [review, setReview] = useState(defaultValues);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [files, setFiles] = useState();
+  // const [rating, setRating] = useState(0);
 
   const categories = [
     'Drip Brew',
@@ -66,7 +69,12 @@ export default function AddReview({ shopId, setShowModal }) {
                 <h4 className="">Add a review</h4>
               </div>
             </div>
-            {/* RATING COMPONENT */}
+            <div className="mb-3">
+              <label className="form-label">Rating</label>
+              {mapper.map((num, i) => (
+                <Star key={i} i={i + 1} rating={review.rating} setReview={setReview} />
+              ))}
+            </div>
             <div className="form-group row">
               <div className="col">
                 <label className="form-label">Category</label>

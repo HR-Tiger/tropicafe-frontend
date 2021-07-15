@@ -22,6 +22,7 @@ const ReviewList = ({ id, type }) => {
 
 
   const getReview = (id => {
+    // let options = {params: {count: 20}};
     axios.get(api)
       .then (data => {
         // console.log(data);
