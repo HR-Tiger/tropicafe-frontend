@@ -9,8 +9,7 @@
     "build": "npx webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:production": "webpack --mode=production",
-    "uglify:bundle": "uglifyjs ./dist/bundle.js -o foo.min.js -c -m",
-    "compress:bundle": ""
+    "uglify:bundle": "uglifyjs ./dist/bundle.js -o foo.min.js -c -m"
   },
   "repository": {
     "type": "git",
