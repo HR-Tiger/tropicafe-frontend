@@ -69,8 +69,13 @@ export default function FilterReviews({ setReviewList, type, id }) {
 
   useEffect(() => {
     if (isMounted) {
+      console.log(api + endpoint);
+      console.log(filters);
       axios.get(api + endpoint, filters)
-        .then(({ data }) => setReviewList(data))
+        .then(({ data }) => {
+          console.log(data);
+          setReviewList(data);
+        })
         .catch(e => console.log(e));
     }
     if (!isMounted) { setIsMounted(true); }
