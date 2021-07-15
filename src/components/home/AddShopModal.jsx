@@ -16,7 +16,18 @@ export default function AddShopModal({ toggleAddShopModal }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('form submitted', shopName, shopPrice, shopAddress, shopPetFriendly, shopCity, shopPhone, shopState, shopZip, shopWebsite);
+    let addShopData = {
+      name: shopName,
+      address: shopAddress,
+      city: shopCity,
+      state: shopState,
+      zip: shopZip,
+      phone_number: shopPhone,
+      price: parseInt(shopPrice),
+      website: shopWebsite,
+      animal_friendly: shopPetFriendly
+    };
+    console.log('form submitted', addShopData);
     setShopName('');
     setShopPrice('');
     setShopAddress('');
@@ -58,8 +69,8 @@ export default function AddShopModal({ toggleAddShopModal }) {
                 <input type="text" className="form-control" value={shopCity} onChange={(event) => setShopCity(event.target.value)} />
               </div>
 
-              <div class="col-sm">
-                <label HtmlFor="state" className='form-label'>State</label>
+              <div className="col-sm">
+                <label htmlFor="state" className='form-label'>State</label>
                 <select className="form-select" id="state" name="state" value={shopState} onChange={(event) => setShopState(event.target.value)}>
                   <option value="">Select</option>
                   <option value="AK">Alaska</option>
@@ -148,8 +159,8 @@ export default function AddShopModal({ toggleAddShopModal }) {
                 <label htmlFor="petFriendly" className="form-label">Are they pet friendly?</label>
                 <select value={shopPetFriendly} className="form-select" onChange={(event) => setShopPetFriendly(event.target.value)}>
                   <option value="">Select</option>
-                  <option value="true">Yes!</option>
-                  <option value="false">No </option>
+                  <option value={true}>Yes!</option>
+                  <option value={false}>No </option>
                 </select>
               </div>
             </div>
