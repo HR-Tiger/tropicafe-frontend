@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Review from './Review.jsx';
 import axios from 'axios';
 import FilterReviews from './FilterReviews.jsx';
+import {URL} from '../config.js';
 
 const ReviewList = ({ id, type }) => {
 
@@ -13,7 +14,7 @@ const ReviewList = ({ id, type }) => {
     }
   }, [id]);
 
-  let api = type === 'shop' ? `http://3.239.52.75/api/shops/${id}/reviews` : `http://3.239.52.75/api/reviews/users/${id}`;
+  let api = type === 'shop' ? `http://${URL}/api/shops/${id}/reviews` : `http://${URL}/api/reviews/users/${id}`;
 
   // console.log(api);
 
