@@ -27,17 +27,20 @@ export default function AddReview({ shopId, setShowModal }) {
     formData.append('category', review.category);
     formData.append('summary', review.summary);
     formData.append('description', review.description);
-    formData.append('photos', files);
-
-    // for (var pair of formData.entries()) {
-    //   console.log(pair);
-    // }
+    if (files) {
+      for (const file of files) {
+        formData.append('photos', file);
+      }
+    }
 
     const headers = {'Content-Type': 'multipart/form-data'};
-
-    axios.post(`${api}/reviews/${shopId}`, formData, headers)
+    axios.post('/post', formData, headers)
       .then(res => console.log(res))
       .catch(e => console.log(e));
+
+    // axios.post(`${api}/reviews/${shopId}`, formData, headers)
+    //   .then(res => console.log(res))
+    //   .catch(e => console.log(e));
   };
 
   return (

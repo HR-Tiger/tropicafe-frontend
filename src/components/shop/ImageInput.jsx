@@ -8,7 +8,10 @@ export default function ImageInput({ setFiles }) {
     for (let i = 0; i < files.length; i++) {
       images.push(files[i]);
     }
-    setFiles(images);
+    // console.log(e.target.files);
+    // console.log(e.target.file);
+    console.log(files);
+    setFiles(files);
   };
 
   return (
