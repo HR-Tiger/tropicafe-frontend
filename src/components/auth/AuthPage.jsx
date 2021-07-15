@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import Login from './Login.jsx';
 import Registration from './Registration.jsx';
 import axios from 'axios';
 
 import { URL } from '../../config.js';
 
-export default function AuthPage({setCurrentUsername}) {
+export default function AuthPage({setUserId}) {
   const [isLogin, setIsLogin] = useState(false);
+  let history = useHistory();
   let baseUrl = `http://${URL}/api/`;
 
   let registerFunc = (data) => {
@@ -17,7 +18,7 @@ export default function AuthPage({setCurrentUsername}) {
       data: data,
     }).then((res)=> {
       let token = res.data.token;
-      setCurrentUsername(data.username);
+      setUserId(res.data.user_id);
       console.log(token);
     }).catch((err) => {
       console.log('err: ', err);
@@ -31,7 +32,7 @@ export default function AuthPage({setCurrentUsername}) {
       data: data,
     }).then((res)=> {
       console.log('resData: ', res);
-      setCurrentUsername(data.username);
+      setUserId(res.data.user_id);
       let token = res.data.token;
       localStorage.setItem('token', token);
     }).catch((err) => {

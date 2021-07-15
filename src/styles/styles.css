@@ -364,19 +364,48 @@ body, html {
 /*****************************************************
 ********************* SEARCH BAR ***********
 ******************************************************/
-.searchWrapper {
+.searchContainer {
+  height: 50px;
+  width: 50%;
+  display: flex;
   margin: 0 auto;
+}
+.searchContainer .searchBar {
+  width: 90%;
+  margin-right: 10px;
   padding: 10px;
   border-radius: 20px;
-  height: 40px;
-  width: 50%;
   box-shadow: 0 2px 6px 0 rgba(140, 150, 170, 0.2), 0 24px 20px -24px rgba(71, 82, 107, 0.1);
   overflow: hidden;
   background: white;
+  border: 2px solid black;
 }
-.searchWrapper input {
+.searchContainer .searchBar input {
   border: none;
   outline: none;
   padding: 0 20px;
   font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+.searchContainer .searchButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  padding: 20px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+}
+.searchContainer .searchButton:hover {
+  transform: scale(1.1);
+}
+.searchContainer .searchButton:active {
+  transform: scale(1);
 }

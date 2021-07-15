@@ -18,13 +18,12 @@ import isAuth from './lib/isAuth.js';
 import logout from './lib/logout.js';
 
 export default function Navigation() {
-  const linkStyle = {margin: '5px'};
-  const [currentUsername, setCurrentUsername] = useState(null);
+  const linkStyle = {margin: '10px'};
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
-    console.log('username: ', currentUsername);
-  }, [currentUsername]);
+    console.log('user_id: ', userId);
+  }, [userId]);
 
   return (
 
@@ -77,11 +76,11 @@ export default function Navigation() {
 
 
         <Route exact path="/login">
-          <AuthPage setCurrentUsername={setCurrentUsername} />
+          <AuthPage setUserId={setUserId} />
         </Route>
 
         <Route exact path="/signup">
-          <AuthPage setCurrentUsername={setCurrentUsername} />
+          <AuthPage setUserId={setUserId} />
         </Route>
 
         <Route path="/user">
