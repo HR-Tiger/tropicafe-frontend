@@ -122,7 +122,7 @@ export default function ShopFilter() {
 
                   {toggleOpenRating ? (<>
                     <div>
-                      <button onClick={() => setToggleOpenRating(false)}>X</button>
+                      <button className="btn-close" aria-label="Close" onClick={() => setToggleOpenRating(false)}></button>
                       <h6>Rating</h6>
                       <div className="form-check">
                         <input className="form-check-input" type="checkbox" value="1" id="1star" checked={isOneStarChecked} onChange={handleOneStarChange} />
@@ -159,13 +159,14 @@ export default function ShopFilter() {
                   ) : (
                     <>
                       <div>
-                        <button onClick={() => setToggleOpenRating(true)}>Rating</button>
+                        <p className="form-select form-select-sm mb-3" aria-label=".form-select-lg example" onClick={() => setToggleOpenRating(true)}>Rating</p>
+
                       </div>
                     </>)}
 
                   {toggleOpenPrice ? (<>
                     <div>
-                      <button onClick={() => setToggleOpenPrice(false)}>X</button>
+                      <button className="btn-close" aria-label="Close" onClick={() => setToggleOpenPrice(false)}></button>
                       <h6>Price Range</h6>
                       <div className="form-check">
                         <input className="form-check-input" type="checkbox" value="1" id="1price" checked={isOnePriceChecked} onChange={handleOnePriceChange} />
@@ -202,14 +203,14 @@ export default function ShopFilter() {
                   ) : (
                     <>
                       <div>
-                        <button onClick={() => setToggleOpenPrice(true)}>Price Range</button>
+                        <button className="form-select form-select-sm mb-3" aria-label=".form-select-lg example" onClick={() => setToggleOpenPrice(true)}>Price Range</button>
                       </div>
                     </>)}
 
 
                   {toggleOpenPet ? (<>
                     <div>
-                      <button onClick={() => setToggleOpenPet(false)}>X</button>
+                      <button className="btn-close" aria-label="Close" onClick={() => setToggleOpenPet(false)}></button>
                       <h6>Pet Friendly</h6>
                       <div className="form-check">
                         <input className="form-check-input" type="checkbox" value="true" id="petTrue" checked={isPetTrueChecked} onChange={handlePetTrueChange} />
@@ -229,10 +230,10 @@ export default function ShopFilter() {
                   ) : (
                     <>
                       <div>
-                        <button onClick={() => setToggleOpenPet(true)}>Pet Friendly</button>
+                        <button className="form-select form-select-sm mb-3" aria-label=".form-select-lg example" onClick={() => setToggleOpenPet(true)}>Pet Friendly</button>
                       </div>
                     </>)}
-                  <button onClick={() => updateFilter()}>Update</button>
+                  <button className='btn btn-primary btn-s'onClick={() => updateFilter()}>Update</button>
                 </div>
               </div>
             </div>
