@@ -4,13 +4,7 @@ export default function ImageInput({ setFiles }) {
 
   const pullFiles = (e) => {
     const { files } = e.target;
-    const images = [];
-    for (let i = 0; i < files.length; i++) {
-      images.push(files[i]);
-    }
-    // console.log(e.target.files);
-    // console.log(e.target.file);
-    console.log(files);
+
     setFiles(files);
   };
 
@@ -22,6 +16,7 @@ export default function ImageInput({ setFiles }) {
           className="form-control"
           name="photos"
           type="file"
+          encType="multipart/form-data"
           accept="image/*"
           id="imageInput"
           onChange={pullFiles}
