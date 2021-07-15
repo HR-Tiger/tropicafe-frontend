@@ -98,6 +98,8 @@ export default function FilterReviews({ setReviewList, type, id }) {
     <div className="checkbox" key={option}>
       <input
         className="form-check-input"
+        ref={`ref_${option}`}
+        checked={false}
         type="checkbox"
         name={option}
         onChange={(e) => handleCheckboxChange(e, icon)}
