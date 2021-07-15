@@ -16,7 +16,6 @@ const ReviewList = ({ id, type }) => {
 
   let api = type === 'shop' ? `http://${URL}/api/shops/${id}/reviews` : `http://${URL}/api/reviews/users/${id}`;
 
-  // console.log(api);
 
   const getReview = (id => {
     axios.get(api)
@@ -31,7 +30,7 @@ const ReviewList = ({ id, type }) => {
 
   return (
     <div className="d-flex justify-content-between">
-      <FilterReviews setReviewList={setReviewList} />
+      <FilterReviews setReviewList={setReviewList} id={id} type={type} />
       <div className='reviewsContainer'>
         {reviewList.map(review => {
           return <Review key={review.review_id} review={review} type={type}/>;

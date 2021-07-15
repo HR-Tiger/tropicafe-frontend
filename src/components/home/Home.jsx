@@ -14,6 +14,7 @@ export default function Home() {
   const [recentShops, setRecentShops] = useState([]);
   const [allPopularShops, setallPopularShops] = useState([]);
   const [allRecentShops, setallRecentShops] = useState([]);
+  const [searchedShops, setSearchedShops] = useState([]);
   const [seeMoreRecent, setSeeMoreRecent] = useState(false);
   const [seeMorePopular, setSeeMorePopular] = useState(false);
   const [addShopModal, setAddShopModal] = useState(false);
@@ -42,7 +43,7 @@ export default function Home() {
   return (
     <>
       <div className='homeContainer'>
-        <SearchBar />
+        <SearchBar setSearchedShops={setSearchedShops} />
         <div className='homeHeader'>
           <button className='addShopButton' onClick={(event) => { toggleAddShopModal(event, true); }}>Add Shop</button>
           <ShopFilter/>
