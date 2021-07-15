@@ -4,9 +4,11 @@ import Login from './Login.jsx';
 import Registration from './Registration.jsx';
 import axios from 'axios';
 
+import { URL } from '../../config.js';
+
 export default function AuthPage({setCurrentUsername}) {
   const [isLogin, setIsLogin] = useState(false);
-  let baseUrl = 'http://3.239.52.75/api/';
+  let baseUrl = `http://${URL}/api/`;
 
   let registerFunc = (data) => {
     axios({
@@ -28,7 +30,7 @@ export default function AuthPage({setCurrentUsername}) {
       url: `${baseUrl}auth/login`,
       data: data,
     }).then((res)=> {
-      console.log("resData: ", res);
+      console.log('resData: ', res);
       setCurrentUsername(data.username);
       let token = res.data.token;
       localStorage.setItem('token', token);

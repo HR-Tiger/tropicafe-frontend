@@ -5,6 +5,9 @@ import ShopFilter from './ShopFilter.jsx';
 import axios from 'axios';
 import SearchBar from '../../shared-components/SearchBar.jsx';
 import '../../styles/styles.css';
+
+import {URL} from '../../config.js';
+
 export default function Home() {
 
   const [popularShops, setPopularShops] = useState([]);
@@ -16,13 +19,13 @@ export default function Home() {
   const [addShopModal, setAddShopModal] = useState(false);
 
   useEffect(() => {
-    axios.get('http://3.239.52.75/api/highRatingShops')
+    axios.get(`http://${URL}/api/highRatingShops`)
       .then(res => {
         setallPopularShops(res.data);
         setPopularShops(res.data.slice(0, 3));
         console.log(res.data);
       });
-    axios.get('http://3.239.52.75/api/recentShops')
+    axios.get(`http://${URL}/api/recentShops`)
       .then(res => {
         setallRecentShops(res.data);
         setRecentShops(res.data.slice(0, 3));
