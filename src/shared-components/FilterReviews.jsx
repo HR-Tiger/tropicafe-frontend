@@ -23,7 +23,7 @@ export default function FilterReviews({ setReviewList, type, id }) {
 
   const [ratings, setRatings] = useState(setCheckboxes());
   const [prices, setPrices] = useState(setCheckboxes());
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState(null);
 
   const handleCheckboxChange = (e, option) => {
     let { name } = e.target;
@@ -41,7 +41,10 @@ export default function FilterReviews({ setReviewList, type, id }) {
   };
 
   const handleClear = () => {
-
+    // setFilters(defaultOptions);
+    setRatings(setCheckboxes());
+    setPrices(setCheckboxes());
+    setCategory(null);
   };
 
   const gatherFilters = filter => (
@@ -55,8 +58,8 @@ export default function FilterReviews({ setReviewList, type, id }) {
     let rating = gatherFilters(ratings);
     let price = gatherFilters(prices);
 
-    if (!rating.length) { rating = filters.rating; }
-    if (!price.length) { price = filters.price; }
+    if (!rating.length) { rating = defaultOptions.rating; }
+    if (!price.length) { price = defaultOptions.price; }
 
     setFilters({
       rating,
