@@ -50,7 +50,7 @@ export default function FilterReviews({ setReviewList, type, id }) {
   const gatherFilters = filter => (
     Object.keys(filter)
       .filter(checkbox => filter[checkbox])
-      .map(checkbox => checkbox)
+      .map(checkbox => Number(checkbox))
   );
 
   const handleSubmit = (e) => {
@@ -68,7 +68,6 @@ export default function FilterReviews({ setReviewList, type, id }) {
     });
   };
 
-
   const endpoint = type === 'shop' ? (
     `shops/${id}/reviews`
   ) : (
@@ -80,12 +79,12 @@ export default function FilterReviews({ setReviewList, type, id }) {
     if (isMounted) {
       // console.log(api + endpoint);
       // console.log(filters);
-      axios.get(api + endpoint, filters)
-        .then(({ data }) => {
-          // console.log(data);
-          setReviewList(data);
-        })
-        .catch(e => console.log(e));
+      // axios.get(api + endpoint, filters)
+      //   .then(({ data }) => {
+      //     // console.log(data);
+      //     setReviewList(data);
+      //   })
+      //   .catch(e => console.log(e));
     }
     if (!isMounted) { setIsMounted(true); }
   }, [filters]);
