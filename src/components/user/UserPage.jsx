@@ -18,7 +18,7 @@ export default function UserPage() {
   // Get User Info
   useEffect(() => axios.get(`http://${URL}/api/users/${id}`).then(({data}) => setUserInfo(data)), []);
   // Get Reviews for User
-  useEffect(() => axios.get(`http://${URL/api/reviews/users/${id}`).then(data => setReviews(data.data)), []);
+  useEffect(() => axios.get(`http://${URL}/api/reviews/users/${id}`).then(data => setReviews(data.data)), []);
 
   return (
     <div className='profilePageBody'>
