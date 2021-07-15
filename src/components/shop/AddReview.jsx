@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ImageInput from './ImageInput.jsx';
+import { api } from '../../lib/api.js';
 
 export default function AddReview({ shopId, setShowModal }) {
   const [review, setReview] = useState({shop_id: shopId});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [files, setFiles] = useState();
 
   const categories = [
     'Drip Brew',
@@ -20,8 +23,19 @@ export default function AddReview({ shopId, setShowModal }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitted(true);
+    const formData = new FormData();
+    formData.append('category', review.category);
+    formData.append('summary', review.summary);
+    formData.append('description', review.description);
+    formData.append('photos', files);
 
-    axios.post('reviews endpoint')
+    // for (var pair of formData.entries()) {
+    //   console.log(pair);
+    // }
+
+    const headers = {'Content-Type': 'multipart/form-data'};
+
+    axios.post(`${api}/reviews/${shopId}`, formData, headers)
       .then(res => console.log(res))
       .catch(e => console.log(e));
   };
@@ -38,7 +52,7 @@ export default function AddReview({ shopId, setShowModal }) {
               </div>
             </div>
             {/* RATING COMPONENT */}
-            <div className="form-group row mb-3">
+            <div className="form-group row">
               <div className="col">
                 <label className="form-label">Category</label>
                 <select
@@ -84,7 +98,8 @@ export default function AddReview({ shopId, setShowModal }) {
                 }}
               />
             </div>
-            <div className="mb-3">
+            <ImageInput setFiles={setFiles} />
+            <div className="">
               <button type="submit" className="btn btn-primary sm-button">Submit</button>
               {!isSubmitted && (
                 <button
