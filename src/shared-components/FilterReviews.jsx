@@ -25,9 +25,9 @@ export default function FilterReviews({ setReviewList, type, id }) {
   const [prices, setPrices] = useState(setCheckboxes());
   const [category, setCategory] = useState(null);
 
-  const handleCheckboxChange = (e, option) => {
+  const handleCheckboxChange = (e, icon) => {
     let { name } = e.target;
-    option === 'star' ? (
+    icon === 'star' ? (
       setRatings(prev => ({
         ...prev,
         [name]: !prev[name]
@@ -41,7 +41,7 @@ export default function FilterReviews({ setReviewList, type, id }) {
   };
 
   const handleClear = () => {
-    // setFilters(defaultOptions);
+    setFilters(defaultOptions);
     setRatings(setCheckboxes());
     setPrices(setCheckboxes());
     setCategory(null);
@@ -78,11 +78,11 @@ export default function FilterReviews({ setReviewList, type, id }) {
 
   useEffect(() => {
     if (isMounted) {
-      console.log(api + endpoint);
-      console.log(filters);
+      // console.log(api + endpoint);
+      // console.log(filters);
       axios.get(api + endpoint, filters)
         .then(({ data }) => {
-          console.log(data);
+          // console.log(data);
           setReviewList(data);
         })
         .catch(e => console.log(e));
@@ -94,12 +94,11 @@ export default function FilterReviews({ setReviewList, type, id }) {
 
 
 
-  const createCheckbox = (option, icon) => (
+  const createCheckbox = (option, type, icon) => (
     <div className="checkbox" key={option}>
       <input
         className="form-check-input"
-        ref={`ref_${option}`}
-        checked={false}
+        checked={type[option]}
         type="checkbox"
         name={option}
         onChange={(e) => handleCheckboxChange(e, icon)}
@@ -111,9 +110,13 @@ export default function FilterReviews({ setReviewList, type, id }) {
     </div>
   );
 
-  const createCheckboxes = icon => mapper.map(option => (
-    createCheckbox(option, icon)
+  const createCheckboxes = (type, icon) => mapper.map(option => (
+    createCheckbox(option, type, icon)
   ));
+
+  const uncheck = (i) => {
+
+  };
 
   return (
     <>
@@ -126,13 +129,13 @@ export default function FilterReviews({ setReviewList, type, id }) {
             <li className="list-group-item">
               <h5 className="card-title">Rating</h5>
               <div className="form-check">
-                {createCheckboxes('star')}
+                {createCheckboxes(ratings, 'star')}
               </div>
             </li>
             <li className="list-group-item">
               <h5 className="card-title">Price</h5>
               <div className="form-check">
-                {createCheckboxes('dollar')}
+                {createCheckboxes(prices, 'dollar')}
               </div>
             </li>
             <li className="list-group-item">
