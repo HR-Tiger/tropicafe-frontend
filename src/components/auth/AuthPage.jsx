@@ -17,7 +17,7 @@ export default function AuthPage(props) {
     })
       .then((res)=> {
         let token = res.data.token;
-        console.log(token)
+        console.log(token);
       })
       .catch((err) => {
         console.log('err: ', err);
