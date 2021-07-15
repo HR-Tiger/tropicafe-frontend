@@ -84,7 +84,7 @@ export default function AddReview({ shopId, setShowModal }) {
                 }}
               />
             </div>
-            <div className="mb-3">
+            <div className="">
               <button type="submit" className="btn btn-primary sm-button">Submit</button>
               {!isSubmitted && (
                 <button
