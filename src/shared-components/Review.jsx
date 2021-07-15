@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import StarRating from '../components/shop/StarRating.jsx';
 import axios from 'axios';
+import { URL } from '../config.js';
 
 const Review = ( { review, type } ) => {
 
@@ -14,7 +15,7 @@ const Review = ( { review, type } ) => {
 
   if (type === 'user') {
     useEffect (() => {
-      axios.get(`http://3.239.52.75/api/shops/${review.shop_id}`)
+      axios.get(`http://${URL}/api/shops/${review.shop_id}`)
         .then (data => {
           // console.log(data.data[0]);
           setShop(data.data[0]);
@@ -37,10 +38,10 @@ const Review = ( { review, type } ) => {
   }
 
   const handleClick = () => {
-    axios.put(`http://3.239.52.75/api/reviews/${review.review_id}`)
+    axios.put(`http://${URL}/api/reviews/${review.review_id}`)
       .then (() => {
         console.log('helpfulness added');
-        axios.get(`http://3.239.52.75/api/reviews/${review.review_id}`)
+        axios.get(`http://${URL}/api/reviews/${review.review_id}`)
           .then (data => {
             setHelpfulness(data.data[0].helpfulness_count);
           })
