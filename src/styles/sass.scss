@@ -14,22 +14,57 @@ body, html {
 ********************* SEARCH BAR ***********
 ******************************************************/
 
-.searchWrapper {
-  margin: 0 auto;
-  padding: 10px;
-  border-radius: 20px;
-  height: 40px;
+.searchContainer {
+	height: 50px;
 	width: 50%;
-  box-shadow: 0 2px 6px 0 rgba(140, 150, 170, .2), 0 24px 20px -24px rgba(71, 82, 107, .1);
-  overflow: hidden;
-  background: white;
+	display: flex;
+	// border: 2px solid purple;
+	margin: 0 auto;
 
-	input {
-		border: none;
-		outline: none;
-		padding: 0 20px;
-		font-size: 16px;
+	.searchBar {
+		width: 90%;
+		margin-right: 10px;
+		padding: 10px;
+		border-radius: 20px;
+		box-shadow: 0 2px 6px 0 rgba(140, 150, 170, .2), 0 24px 20px -24px rgba(71, 82, 107, .1);
+		overflow: hidden;
+		background: white;
+		// display: flex;
+		border: 2px solid black;
+
+		input {
+			border: none;
+			outline: none;
+			padding: 0 20px;
+			font-size: 16px;
+			display: flex;
+			align-items: center;
+		}
+	};
+
+
+	.searchButton {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 50px;
+		height: 50px;
+		padding: 20px;
+		border: 1px solid #00B4CC;
+		background: #00B4CC;
+		text-align: center;
+		color: #fff;
+		border-radius: 50%;
+		cursor: pointer;
+		font-size: 20px;
+
+		&:hover {
+			transform: scale(1.1);
+		}
+		&:active {
+			transform: scale(1);
+		}
 	}
-};
+}
 
 

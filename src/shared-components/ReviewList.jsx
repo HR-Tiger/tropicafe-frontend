@@ -20,7 +20,6 @@ const ReviewList = ({ id, type }) => {
   // let api = type === 'shop' ? `http://${URL}/api/shops/${id}/reviews` : `http://${URL}/api/reviews/users/${id}`;
   let api = type === 'shop' ? `http://${URL}${endpoints.getShopReviews(id)}` : `http://${URL}/api/reviews/users/${id}`;
 
-  // console.log(api);
 
   const getReview = (id => {
     axios.get(api)
