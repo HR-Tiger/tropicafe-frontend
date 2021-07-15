@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Review from './Review.jsx';
 import axios from 'axios';
+import FilterReviews from './FilterReviews.jsx';
 
 const ReviewList = ({ id, type }) => {
 
@@ -28,10 +29,13 @@ const ReviewList = ({ id, type }) => {
   });
 
   return (
-    <div className='reviewsContainer'>
-      {reviewList.map(review => {
-        return <Review key={review.review_id} review={review} type={type}/>;
-      })}
+    <div className="d-flex justify-content-between">
+      <FilterReviews setReviewList={setReviewList} />
+      <div className='reviewsContainer'>
+        {reviewList.map(review => {
+          return <Review key={review.review_id} review={review} type={type}/>;
+        })}
+      </div>
     </div>
   );
 

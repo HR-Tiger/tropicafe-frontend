@@ -51,7 +51,7 @@ export default function Navigation() {
               </Link> }
               {isAuth() && <Link className="nav-link" to="/user">My profile</Link> }
 
-              {isAuth() && <button onClick={e => {logout()}}>LOGOUT</button>}
+              {isAuth() && <button onClick={e => logout()}>LOGOUT</button>}
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function Navigation() {
         {/* The variable will just be the shop id */}
         <Route path="/shop/:id" component={ShopPage} />
 
-        <Route path="/user/:id" exact component={UserPage} />
+        <Route path="/user/:id" component={UserPage} />
 
         {/* <Route path="user/:id">
           <UserPage />
