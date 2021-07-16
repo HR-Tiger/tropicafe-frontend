@@ -38,7 +38,7 @@ export default function Registration ({flipCard, registerFunc}) {
         <div className='Input' >
           <input id="password" name="Password" type="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
         </div>
-        <button>Log in</button>
+        <button className='loginBtn'>Register</button>
       </form>
     </div>
   );
