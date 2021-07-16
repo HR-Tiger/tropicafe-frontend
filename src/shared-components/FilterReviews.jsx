@@ -8,7 +8,6 @@ export default function FilterReviews({ setReviewList, type, id }) {
   const mapper = [1, 2, 3, 4, 5];
   const defaultOptions = {
     rating: [1, 2, 3, 4, 5],
-    price: [1, 2, 3, 4, 5],
     category: null
   };
   const [filters, setFilters] = useState(defaultOptions);
@@ -56,15 +55,20 @@ export default function FilterReviews({ setReviewList, type, id }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     let rating = gatherFilters(ratings);
-    let price = gatherFilters(prices);
+    // let price = gatherFilters(prices);
 
     if (!rating.length) { rating = defaultOptions.rating; }
-    if (!price.length) { price = defaultOptions.price; }
+    // if (!price.length) { price = defaultOptions.price; }
+    let newCategory;
+    if (category === null) {
+      newCategory = null;
+    } else {
+      newCategory = [category];
+    }
 
     setFilters({
       rating,
-      price,
-      category
+      category: newCategory
     });
   };
 
@@ -78,13 +82,14 @@ export default function FilterReviews({ setReviewList, type, id }) {
   useEffect(() => {
     if (isMounted) {
       // console.log(api + endpoint);
-      // console.log(filters);
-      // axios.get(api + endpoint, filters)
-      //   .then(({ data }) => {
-      //     // console.log(data);
-      //     setReviewList(data);
-      //   })
-      //   .catch(e => console.log(e));
+      console.log(filters);
+      const params = {params: filters};
+      axios.get(api + `/shops/${id}/reviews/filter/?rating=[1]&category=null`)
+        .then(({ data }) => {
+          console.log(data);
+          // setReviewList(data);
+        })
+        .catch(e => console.log(e));
     }
     if (!isMounted) { setIsMounted(true); }
   }, [filters]);
