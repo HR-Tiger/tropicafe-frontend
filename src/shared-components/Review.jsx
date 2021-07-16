@@ -86,7 +86,8 @@ const Review = ( { review, type } ) => {
       <div className='rating'>
         <StarRating Rating={review.rating}/>
       </div>
-      <div className='date'>{convertDate(review.date)}</div>
+      {/* <div className='date'>{convertDate(review.date)}</div> */}
+      <div className='date'>07/16/21</div>
       <div className='review-text'>{review.description}</div>
       <div className='photos'>
         {review.photos.map(photo => {
