@@ -83,7 +83,7 @@
   background: rgba(0, 0, 0, 0.4);
 }
 
-.popularShopsContainer, .recentShopsContainer {
+.popularShopsContainer, .recentShopsContainer, .searchedShopsContainer {
   background-color: whitesmoke;
   border-radius: 10px;
   padding: 5px;
@@ -91,7 +91,7 @@
   margin: 10px auto;
   margin-bottom: 20px;
 }
-.popularShopsContainer h2, .recentShopsContainer h2 {
+.popularShopsContainer h2, .recentShopsContainer h2, .searchedShopsContainer h2 {
   color: black;
 }
 
