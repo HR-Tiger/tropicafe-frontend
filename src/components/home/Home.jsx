@@ -50,7 +50,7 @@ export default function Home() {
 
         <div className=''>
           {(searchedShops.length > 0) ? (<>
-            <ShopFilter />
+            {/* <ShopFilter /> */}
             <div className='searchedShopsContainer'>
               {seeMoreSearched ? (
                 <>
