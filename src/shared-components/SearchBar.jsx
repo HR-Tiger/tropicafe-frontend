@@ -30,8 +30,8 @@ export default function SearchBar({ type, results, setResults, setSearchedShops 
         <input id='searchInput' type="text" placeholder="Search" />
       </div>
       <div>
-        <button onClick={handleSearch} type="submit" class="searchButton">
-          <i class="fa fa-search"></i>
+        <button onClick={handleSearch} type="submit" className="searchButton">
+          <i className="fa fa-search"></i>
         </button>
       </div>
 

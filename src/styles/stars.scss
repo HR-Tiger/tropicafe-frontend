@@ -1,0 +1,9 @@
+.click-stars {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color .2s ease-in;
+
+  :hover {
+    color: gold;
+  }
+}

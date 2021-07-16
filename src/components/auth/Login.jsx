@@ -23,7 +23,7 @@ export default function Login ({flipCard, loginFunc}) {
           <input id="password" name="Password" type="password" placeholder="password" onChange={e => setPassword(e.target.value)}/>
         </div>
 
-        <button>Log in</button>
+        <button className='loginBtn'>Log in</button>
       </form>
     </div>
   );
