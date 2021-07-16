@@ -169,6 +169,10 @@
   padding: 5px;
 }
 
+.shopImages {
+  height: 250px;
+}
+
 .recent-title {
   color: white;
   display: flex;
