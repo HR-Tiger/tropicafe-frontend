@@ -15,6 +15,7 @@ export default function AuthPage({type}) {
     localStorage.setItem('userId', data.user_id);
     localStorage.setItem('token', data.token);
     history.push('/');
+    window.location.reload();
   };
 
   let postAuth = (data, endpoint) => {

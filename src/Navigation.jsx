@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {
-  BrowserRouter as Router, Switch, Route, Link, useHistory
+  BrowserRouter as Router, Switch, Route, Link, useLocation, useHistory
 } from 'react-router-dom';
 
 import Home from './components/home/Home.jsx';
@@ -14,11 +14,13 @@ import getCurrentUser from './lib/getCurrentUser.js';
 import logout from './lib/logout.js';
 
 export default function Navigation() {
-  let history = useHistory();
+  let history1 = useHistory();
 
   let handleLogout = (e) => {
+    console.log('logout: ', logout);
     logout();
-    useHistory('/login');
+    // history1.push('/home');
+    window.location.reload();
   };
 
   let loginLink = <Link className="nav-link" to={{
