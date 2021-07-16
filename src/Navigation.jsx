@@ -1,32 +1,41 @@
 import React, {useState, useEffect} from 'react';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+  BrowserRouter as Router, Switch, Route, Link, useLocation, useHistory
 } from 'react-router-dom';
 
 import Home from './components/home/Home.jsx';
 import AuthPage from './components/auth/AuthPage.jsx';
-// import Login from './components/auth/Login.jsx';
-// import Registration from './components/auth/Registration.jsx';
 import Shop from './components/shop/Shop.jsx';
 import UserPage from './components/user/UserPage.jsx';
 import ShopPage from './components/shop/ShopPage.jsx';
 import ReviewList from './shared-components/ReviewList.jsx';
 import isAuth from './lib/isAuth.js';
+import getCurrentUser from './lib/getCurrentUser.js';
 import logout from './lib/logout.js';
 
 export default function Navigation() {
-  const linkStyle = {margin: '10px'};
-  const [userId, setUserId] = useState(null);
+  let history1 = useHistory();
 
-  useEffect(() => {
-    console.log('user_id: ', userId);
-  }, [userId]);
+  let handleLogout = (e) => {
+    console.log('logout: ', logout);
+    logout();
+    // history1.push('/home');
+    window.location.reload();
+  };
+
+  let loginLink = <Link className="nav-link" to={{
+    pathname: '/login',
+    state: { type: 'login' }
+  }}> Login </Link>;
+
+  let signupLink = <Link className="nav-link" to={{
+    pathname: 'signup',
+    state: { type: 'registration' }
+  }}> Sign Up </Link>;
+
+  let profileLink = <Link className="nav-link" to={`/user/${getCurrentUser()}`}>My profile</Link>;
 
   return (
-
 
     <Router>
 
@@ -41,22 +50,12 @@ export default function Navigation() {
           </button>
           <div className="collapse navbar-collapse justify-content-md-center">
             <div className="navbar-nav">
-              <Link className="nav-link" to="/">Home</Link>
-              { !isAuth() && <Link className="nav-link" to={{
-                pathname: '/login',
-                state: { type: 'login' }
-              }}>
-                Login
-              </Link> }
-              { !isAuth() && <Link className="nav-link" to={{
-                pathname: 'signup',
-                state: { type: 'registration' }
-              }}>
-                Sign Up
-              </Link> }
-              {isAuth() && <Link className="nav-link" to="/user">My profile</Link> }
 
-              {isAuth() && <button onClick={e => logout()}>LOGOUT</button>}
+              <Link className="nav-link" to="/">Home</Link>
+              { !isAuth() && loginLink}
+              { !isAuth() && signupLink }
+              {isAuth() && profileLink }
+              {isAuth() && <button className='logoutBtn' onClick={handleLogout}>LOGOUT</button>}
             </div>
           </div>
         </div>
@@ -73,7 +72,6 @@ export default function Navigation() {
         <Route exact path="/">
           <Home />
         </Route>
-
 
         <Route exact path="/login" replace>
           <AuthPage setUserId={setUserId} />

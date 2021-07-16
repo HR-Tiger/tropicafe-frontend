@@ -7,41 +7,28 @@ import { endpoints } from '../../lib/endpoints.js';
 
 import { URL } from '../../config.js';
 
-export default function AuthPage({setUserId}) {
-  const [isLogin, setIsLogin] = useState(false);
-  let baseUrl = `http://${URL}`;
+export default function AuthPage({type}) {
+  const [isLogin, setIsLogin] = useState(type === 'login');
   let history = useHistory();
 
-  let registerFunc = (data) => {
-    axios({
-      method: 'post',
-      url: `${baseUrl}${endpoints.postRegister}`,
-      // url: `${baseUrl}auth/register`,
-      data: data,
-    }).then((res)=> {
-      let token = res.data.token;
-      setUserId(res.data.user_id);
-      console.log(token);
-    }).catch((err) => {
-      console.log('err: ', err);
-    });
+  let handleLogin = (data) => {
+    localStorage.setItem('userId', data.user_id);
+    localStorage.setItem('token', data.token);
+    history.push('/');
+    window.location.reload();
   };
 
-  const loginFunc = (data) => {
+
+  let postAuth = (data, endpoint) => {
     axios({
       method: 'post',
-      url: `${baseUrl}${endpoints.postLogin}`,
-      //url: `${baseUrl}auth/login`,
+      url: `${baseUrl}auth/${endpoint}`,
       data: data,
-    }).then((res)=> {
-      console.log('resData: ', res);
-      setUserId(res.data.user_id);
-      let token = res.data.token;
-      localStorage.setItem('token', token);
-    }).catch((err) => {
-      console.error(err);
-    });
+    }).then((res)=> handleLogin(res.data)).catch((err) => console.log('err: ', err));
   };
+
+  let registerFunc = data => postAuth(data, 'register');
+  let loginFunc = data => postAuth(data, 'login');
 
   let flipCard = () => setIsLogin(!isLogin);
 

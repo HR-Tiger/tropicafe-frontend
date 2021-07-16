@@ -31,7 +31,7 @@ export default function Home() {
       .then(res => {
         setallRecentShops(res.data);
         setRecentShops(res.data.slice(0, 3));
-
+        console.log(res.data);
       });
   }, []);
 
@@ -46,13 +46,12 @@ export default function Home() {
       <div className='homeContainer'>
         <SearchBar setSearchedShops={setSearchedShops} />
         <div className='homeHeader'>
-          <button className='addShopButton' onClick={(event) => { toggleAddShopModal(event, true); }}>Add Shop</button>
-          <ShopFilter />
+
         </div>
 
         <div className=''>
           {(searchedShops.length > 0) ? (<>
-
+            <ShopFilter />
             <div className='searchedShopsContainer'>
               {seeMoreSearched ? (
                 <>
@@ -70,6 +69,7 @@ export default function Home() {
           </>
           ) : (
             <>
+              <button className='addShopButton' onClick={(event) => { toggleAddShopModal(event, true); }}>Add Shop</button>
               <div className='popularShopsContainer'>
                 {seeMorePopular ? (<>
                   <h2 className='popular-title'>Popular Coffee Shops</h2>

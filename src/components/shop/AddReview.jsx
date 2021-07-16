@@ -31,6 +31,7 @@ export default function AddReview({ shopId, setShowModal }) {
   ];
 
   const handleSubmit = (e) => {
+    console.log('does it work');
     e.preventDefault();
     setIsSubmitted(true);
     const formData = new FormData();
