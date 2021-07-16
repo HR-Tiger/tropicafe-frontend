@@ -41,15 +41,22 @@ export default function Shop({ shop }) {
             state: { shop: shop }
           }}><h3 className='card-title'>{shop.name}</h3></Link>
 
-          <div className="card-body">
-            <StarRating Rating={shop.avg_rating} />
-          </div>
+
+          {shop.avg_rating ? (
+            <>
+              <div className="card-body">
+                <StarRating Rating={shop.avg_rating} />
+              </div>
+            </>
+          ) : (
+            <>
+              <p>No Reviews Yet!</p>
+            </>)}
           <p className="card-text">{priceIcons()}</p>
           <p className="card-text">{shop.address} , {shop.city}</p>
           {shop.animal_friendly ? <p className="card-text">Pet Friendly ✅</p> : <p className="card-text">Pet Friendly 🚫 </p>}
         </div>
       </div>
-
     </>
   );
 }
