@@ -31,7 +31,7 @@ export default function Home() {
       .then(res => {
         setallRecentShops(res.data);
         setRecentShops(res.data.slice(0, 3));
-
+        console.log(res.data);
       });
   }, []);
 
