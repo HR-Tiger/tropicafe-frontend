@@ -73,11 +73,11 @@ export default function Navigation() {
           <Home />
         </Route>
 
-        <Route exact path="/login">
+        <Route exact path="/login" replace>
           <AuthPage type={'login'} />
         </Route>
 
-        <Route exact path="/signup">
+        <Route exact path="/signup" replace>
           <AuthPage type={'signup'} />
         </Route>
 

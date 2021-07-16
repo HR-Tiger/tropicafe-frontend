@@ -5,6 +5,7 @@ import Star from '../../shared-components/Star.jsx';
 import { api } from '../../lib/api.js';
 import { endpoints } from '../../lib/endpoints.js';
 import { URL } from '../../config.js';
+import { categories } from '../../lib/categories.js';
 
 export default function AddReview({ shopId, setShowModal }) {
   const mapper = [1, 2, 3, 4, 5];
@@ -17,18 +18,6 @@ export default function AddReview({ shopId, setShowModal }) {
   const [review, setReview] = useState(defaultValues);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [files, setFiles] = useState();
-
-  const categories = [
-    'Drip Brew',
-    'Latte',
-    'Cappucino',
-    'Americano',
-    'Espresso',
-    'Mocha',
-    'Tea',
-    'Iced Coffee',
-    'Cold Brew'
-  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
