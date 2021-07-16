@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {
-  BrowserRouter as Router, Switch, Route, Link, useLocation, useHistory
+  BrowserRouter as Router, Switch, Route, Link
 } from 'react-router-dom';
 
 import Home from './components/home/Home.jsx';
@@ -14,12 +14,9 @@ import getCurrentUser from './lib/getCurrentUser.js';
 import logout from './lib/logout.js';
 
 export default function Navigation() {
-  let history1 = useHistory();
 
   let handleLogout = (e) => {
-    console.log('logout: ', logout);
     logout();
-    // history1.push('/home');
     window.location.reload();
   };
 
@@ -38,9 +35,6 @@ export default function Navigation() {
   return (
 
     <Router>
-
-      {/* These are individual links that lead to the defined path
-          This what we will use anywhere we have a link */}
 
       <div className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
@@ -61,14 +55,8 @@ export default function Navigation() {
         </div>
       </div>
 
-
-      {/* <Link style={linkStyle} to="/shop">Shop</Link>
-
-      <Link style={linkStyle} to="/reviews">Reviews</Link> */}
-
       <Switch>
 
-        {/* This defines what happens when you get to the path */}
         <Route exact path="/">
           <Home />
         </Route>
@@ -85,33 +73,13 @@ export default function Navigation() {
           <UserPage />
         </Route>
 
-        {/* <Route path="/shop">
-          <ShopPage />
-        </Route> */}
-
         <Route path="/reviews">
           <ReviewList />
         </Route>
 
-
-        {/* The variable will just be the shop id */}
         <Route path="/shop/:id" component={ShopPage} />
 
         <Route path="/user/:id" component={UserPage} />
-
-        {/* <Route path="user/:id">
-          <UserPage />
-        </Route> */}
-
-
-        {/* I'm not sure exactly how this would work, but it's a possible option we can consider */}
-        {/* <Route exact path="/add-review">
-          <Modal />
-        </Route>
-
-        <Route exact path="/add-shop">
-          <Modal />
-        </Route> */}
 
       </Switch>
 
