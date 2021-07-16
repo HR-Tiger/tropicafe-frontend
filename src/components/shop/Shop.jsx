@@ -5,12 +5,15 @@ import { Link } from 'react-router-dom';
 
 export default function Shop({ shop }) {
 
+  const imageSource = shop.photos ? shop.photos[0].url : 'http://dummyimage.com/250x250.png/5fa2dd/ffffff';
 
 
   return (
     <>
       <div className='cardContainer card'>
-        <img className="img-fluid" src={'http://dummyimage.com/101x100.png/cc0000/ffffff'} />
+        <img className="img-fluid" src={imageSource} />
+
+
         <div className="card-body">
           <Link to={{
             pathname: `/shop/${shop.shop_id}`,

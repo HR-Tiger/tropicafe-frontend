@@ -20,6 +20,7 @@ export default function AddReview({ shopId, setShowModal }) {
   const [files, setFiles] = useState();
 
   const handleSubmit = (e) => {
+    console.log('does it work');
     e.preventDefault();
     setIsSubmitted(true);
     const formData = new FormData();

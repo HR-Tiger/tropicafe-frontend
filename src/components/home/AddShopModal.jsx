@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/styles.css';
 import ImageInput from '../shop/ImageInput.jsx';
+import { URL } from '../../config.js';
+import axios from 'axios';
 
 
 export default function AddShopModal({ toggleAddShopModal }) {
@@ -21,25 +23,24 @@ export default function AddShopModal({ toggleAddShopModal }) {
     formData.append('name', shopName);
     formData.append('address', shopAddress);
     formData.append('city', shopCity);
-    formData.append('zip', shopZip);
+    formData.append('state', shopState);
+    formData.append('zip', parseInt(shopZip));
     formData.append('phone_number', shopPhone);
     formData.append('price', parseInt(shopPrice));
-    formData.append('phone_number', shopPhone);
     formData.append('website', shopWebsite);
     formData.append('animal_friendly', shopPetFriendly);
-    formData.append('photos', files);
 
-    // for (var pair of formData.entries()) {
-    //   console.log(pair);
-    // }
-
+    if (files) {
+      for (const file of files) {
+        formData.append('photos', file);
+      }
+    }
     const headers = { 'Content-Type': 'multipart/form-data' };
 
-    // axios.post(`${api}/reviews/${shopId}`, formData, headers)
-    //   .then(res => console.log(res))
-    //   .catch(e => console.log(e));
+    axios.post(`http://${URL}/api/shops`, formData, headers)
+      .then(res => console.log('add shop added', res))
+      .catch(e => console.log('addshop not working', e));
 
-    console.log('form submitted', formData);
     setShopName('');
     setShopPrice('');
     setShopAddress('');
@@ -154,7 +155,7 @@ export default function AddShopModal({ toggleAddShopModal }) {
                 <input type="text" className="form-control" value={shopPhone} onChange={(event) => setShopPhone(event.target.value)} />
               </div>
               <div className="col-sm">
-                <label htmlfFor="price" className="form-label">Price Level</label>
+                <label htmlFor="price" className="form-label">Price Level</label>
 
                 <select value={shopPrice} className="form-select" onChange={(event) => setShopPrice(event.target.value)}>
                   <option value="">Select</option>
