@@ -5,8 +5,9 @@ import Star from '../../shared-components/Star.jsx';
 import { api } from '../../lib/api.js';
 import { endpoints } from '../../lib/endpoints.js';
 import { URL } from '../../config.js';
+import { categories } from '../../lib/categories.js';
 
-export default function AddReview({ shopId, setShowModal }) {
+export default function AddReview({ shopId, userId, setShowModal }) {
   const mapper = [1, 2, 3, 4, 5];
   const defaultValues = {
     rating: 0,
@@ -17,26 +18,19 @@ export default function AddReview({ shopId, setShowModal }) {
   const [review, setReview] = useState(defaultValues);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [files, setFiles] = useState();
-
-  const categories = [
-    'Drip Brew',
-    'Latte',
-    'Cappucino',
-    'Americano',
-    'Espresso',
-    'Mocha',
-    'Tea',
-    'Iced Coffee',
-    'Cold Brew'
-  ];
+  const [hasError, setHasError] = useState(false);
 
   const handleSubmit = (e) => {
-    console.log('does it work');
     e.preventDefault();
+    if (review.rating < 1) {
+      setHasError(true);
+      return;
+    }
+    console.log('does it work');
     setIsSubmitted(true);
     const formData = new FormData();
-    formData.append('rating', 5);
-    formData.append('user_id', 1);
+    formData.append('rating', Number(review.rating));
+    formData.append('user_id', Number(userId));
     formData.append('category', review.category);
     formData.append('summary', review.summary);
     formData.append('description', review.description);
@@ -47,11 +41,19 @@ export default function AddReview({ shopId, setShowModal }) {
       }
     }
 
+    console.log(review);
+
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ', ' + pair[1]);
+      console.log(pair[0] + ', ' + typeof pair[1]);
+    }
+
+
     const headers = {'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*'};
 
-    axios.post(`http://${URL}${endpoints.postReview}${shopId}`, formData, headers)
-      .then(res => console.log(res))
-      .catch(e => console.log(e));
+    // axios.post(`http://${URL}${endpoints.postReview}${shopId}`, formData, headers)
+    //   .then(res => console.log(res))
+    //   .catch(e => console.log(e));
 
     setReview(defaultValues);
     setFiles();
@@ -74,6 +76,7 @@ export default function AddReview({ shopId, setShowModal }) {
                 {mapper.map((num, i) => (
                   <Star key={i} i={i + 1} rating={review.rating} setReview={setReview} />
                 ))}
+                {hasError && <span className="mx-3">Please choose a rating</span>}
               </div>
             </div>
             <div className="form-group row">

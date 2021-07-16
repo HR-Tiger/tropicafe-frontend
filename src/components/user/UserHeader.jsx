@@ -1,10 +1,16 @@
 import React from 'react';
+import defaultProfile from '../../../storage/default-profile.jpeg';
 
 export default function UserHeader({userInfo, reviews}) {
+  let profilePhoto = userInfo.profile_photo_url;
+
+  if (!profilePhoto) {
+    profilePhoto = defaultProfile;
+  }
 
   return (
     <div className='userHeader'>
-      <img src={`${userInfo.profile_photo_url}`} />
+      <img src={`${profilePhoto}` } />
 
       <div className='profileInfoContainer'>
         <div className='info'>

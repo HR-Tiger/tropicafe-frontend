@@ -3,10 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-image: url("/storage/bg2.jpg");
-  background-size: cover;
-  background-position: center;
+  height: 90vh;
 }
 .authPageBody h1 {
   color: purple;
@@ -201,16 +198,12 @@
 }
 
 .profilePageBody {
-  background: linear-gradient(360deg, #FD6F46 10%, #FB9832 360%);
   position: relative;
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   padding: 50px 0;
   align-items: center;
-  background-image: url("/storage/bg2.jpg");
-  background-size: cover;
-  background-position: center;
 }
 .profilePageBody h1 {
   color: purple;
@@ -362,7 +355,16 @@ body, html {
   overscroll-behavior: none;
   box-sizing: border-box;
   margin: 0;
-  height: 100%;
+}
+
+html, #root {
+  background: url("/storage/bg2.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
 }
 
 .logoutBtn {
@@ -398,6 +400,16 @@ body, html {
   font-size: 16px;
   display: flex;
   align-items: center;
+}
+.searchContainer .toggleSearchBtn {
+  border: 1px solid #00B4CC;
+  font-size: large;
+  background: #00B4CC;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  margin-right: 10px;
 }
 .searchContainer .searchButton {
   display: flex;
