@@ -51,9 +51,9 @@ export default function AddReview({ shopId, userId, setShowModal }) {
 
     const headers = {'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*'};
 
-    // axios.post(`http://${URL}${endpoints.postReview}${shopId}`, formData, headers)
-    //   .then(res => console.log(res))
-    //   .catch(e => console.log(e));
+    axios.post(`http://${URL}${endpoints.postReview}${shopId}`, formData, headers)
+      .then(res => console.log(res))
+      .catch(e => console.log(e));
 
     setReview(defaultValues);
     setFiles();
