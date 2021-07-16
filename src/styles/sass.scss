@@ -77,3 +77,16 @@ body, html {
 }
 
 
+.click-stars {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color .2s ease-in;
+	color: black;
+}
+
+.after-click {
+	font-size: 1.5rem;
+	cursor: pointer;
+	transition: color .2s ease-in;
+	color: gold;
+}

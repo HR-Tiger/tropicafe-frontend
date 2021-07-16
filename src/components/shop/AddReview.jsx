@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ImageInput from './ImageInput.jsx';
+import Star from '../../shared-components/Star.jsx';
 import { api } from '../../lib/api.js';
+import { endpoints } from '../../lib/endpoints.js';
+import { URL } from '../../config.js';
 
 export default function AddReview({ shopId, setShowModal }) {
-  const [review, setReview] = useState({shop_id: shopId});
+  const mapper = [1, 2, 3, 4, 5];
+  const defaultValues = {
+    rating: 0,
+    category: '',
+    summary: '',
+    description: ''
+  };
+  const [review, setReview] = useState(defaultValues);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [files, setFiles] = useState();
 
@@ -24,20 +34,26 @@ export default function AddReview({ shopId, setShowModal }) {
     e.preventDefault();
     setIsSubmitted(true);
     const formData = new FormData();
+    formData.append('rating', 5);
+    formData.append('user_id', 1);
     formData.append('category', review.category);
     formData.append('summary', review.summary);
     formData.append('description', review.description);
-    formData.append('photos', files);
 
-    // for (var pair of formData.entries()) {
-    //   console.log(pair);
-    // }
+    if (files) {
+      for (const file of files) {
+        formData.append('photos', file);
+      }
+    }
 
-    const headers = {'Content-Type': 'multipart/form-data'};
+    const headers = {'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*'};
 
-    axios.post(`${api}/reviews/${shopId}`, formData, headers)
+    axios.post(`http://${URL}${endpoints.postReview}${shopId}`, formData, headers)
       .then(res => console.log(res))
       .catch(e => console.log(e));
+
+    setReview(defaultValues);
+    setFiles();
   };
 
   return (
@@ -51,7 +67,14 @@ export default function AddReview({ shopId, setShowModal }) {
                 <h4 className="">Add a review</h4>
               </div>
             </div>
-            {/* RATING COMPONENT */}
+            <div className="mb-3">
+              <label className="form-label">Rating</label>
+              <div className="mb-3">
+                {mapper.map((num, i) => (
+                  <Star key={i} i={i + 1} rating={review.rating} setReview={setReview} />
+                ))}
+              </div>
+            </div>
             <div className="form-group row">
               <div className="col">
                 <label className="form-label">Category</label>
@@ -78,6 +101,7 @@ export default function AddReview({ shopId, setShowModal }) {
                   type="text"
                   rows="3"
                   placeholder="So delicious!!!"
+                  value={review.summary}
                   required
                   onChange={(e) => {
                     setReview(prev => {
@@ -92,6 +116,7 @@ export default function AddReview({ shopId, setShowModal }) {
               <textarea
                 className="form-control"
                 placeholder="What made it so great?"
+                value={review.description}
                 required
                 onChange={(e) => {
                   setReview(prev => ({...prev, description: e.target.value}));

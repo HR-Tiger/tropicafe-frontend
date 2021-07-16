@@ -3,13 +3,13 @@ import { useLocation, useHistory } from 'react-router-dom';
 import Login from './Login.jsx';
 import Registration from './Registration.jsx';
 import axios from 'axios';
+import { endpoints } from '../../lib/endpoints.js';
 
 import { URL } from '../../config.js';
 
 export default function AuthPage({type}) {
   const [isLogin, setIsLogin] = useState(type === 'login');
   let history = useHistory();
-  let baseUrl = `http://${URL}/api/`;
 
   let handleLogin = (data) => {
     localStorage.setItem('userId', data.user_id);
@@ -17,6 +17,7 @@ export default function AuthPage({type}) {
     history.push('/');
     window.location.reload();
   };
+
 
   let postAuth = (data, endpoint) => {
     axios({
