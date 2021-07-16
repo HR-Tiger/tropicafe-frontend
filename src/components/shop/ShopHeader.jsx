@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import StarRating from './StarRating.jsx';
 import AddReview from './AddReview.jsx';
+import getCurrentUser from '../../lib/getCurrentUser.js';
 import comingSoon from '../../../dist/coming-soon.jpg';
 
 const style = {
@@ -11,6 +12,7 @@ const style = {
 };
 
 export default function ShopHeader({ shop }) {
+  const [userId, setUserId] = useState();
   const [showModal, setShowModal] = useState(false);
 
   const displayPrice = () => {
@@ -23,6 +25,13 @@ export default function ShopHeader({ shop }) {
         </div>
       );
     });
+  };
+
+  useEffect(() => setUserId(getCurrentUser()), []);
+
+  const handleAddReview = () => {
+    if (!userId) { return alert('Please login to leave a review'); }
+    setShowModal(true);
   };
 
   // Just so it isn't 100 characters long
@@ -80,11 +89,11 @@ export default function ShopHeader({ shop }) {
               </li>
             </ul>
           </div>
-          <button className="btn btn-outline-primary my-3 sm-button" onClick={() => setShowModal(true)}>Add a review</button>
+          <button className="btn btn-outline-primary my-3 sm-button" onClick={handleAddReview}>Add a review</button>
         </div>
       </div>
 
-      {showModal && <AddReview shopId={shop.shop_id} setShowModal={setShowModal} />}
+      {showModal && <AddReview shopId={shop.shop_id} userId={userId} setShowModal={setShowModal} />}
 
     </div>
   );
