@@ -75,11 +75,11 @@ export default function Navigation() {
         </Route>
 
 
-        <Route exact path="/login">
+        <Route exact path="/login" replace>
           <AuthPage setUserId={setUserId} />
         </Route>
 
-        <Route exact path="/signup">
+        <Route exact path="/signup" replace>
           <AuthPage setUserId={setUserId} />
         </Route>
 
