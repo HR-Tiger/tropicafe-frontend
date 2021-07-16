@@ -29,6 +29,11 @@ export default function ShopHeader({ shop }) {
 
   useEffect(() => setUserId(getCurrentUser()), []);
 
+  const handleAddReview = () => {
+    if (!userId) { return alert('Please login to leave a review'); }
+    setShowModal(true);
+  };
+
   // Just so it isn't 100 characters long
   shop.website = shop.website.slice(0, 20);
 
@@ -84,7 +89,7 @@ export default function ShopHeader({ shop }) {
               </li>
             </ul>
           </div>
-          <button className="btn btn-outline-primary my-3 sm-button" onClick={() => setShowModal(true)}>Add a review</button>
+          <button className="btn btn-outline-primary my-3 sm-button" onClick={handleAddReview}>Add a review</button>
         </div>
       </div>
 

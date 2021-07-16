@@ -16,7 +16,7 @@ export const endpoints = {
 
   //post
   postRegister: '/api/auth/register',
-  postLogin: '/api/auth/register',
+  postLogin: '/api/auth/login',
   postReview: '/api/reviews/', //'/api/reviews/:shopId'
   postShop: '/api/shops'
   // getShopReviews: (id) => (`/api/shops/${id}/reviews`)

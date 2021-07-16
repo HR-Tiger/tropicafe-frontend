@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import Login from './Login.jsx';
 import Registration from './Registration.jsx';
@@ -8,7 +8,9 @@ import { endpoints } from '../../lib/endpoints.js';
 import { URL } from '../../config.js';
 
 export default function AuthPage({type}) {
-  const [isLogin, setIsLogin] = useState(type === 'login');
+  const [isLogin, setIsLogin] = useState();
+  useEffect(() => setIsLogin(type === 'login'), [type]);
+
   let history = useHistory();
 
   let handleLogin = (data) => {

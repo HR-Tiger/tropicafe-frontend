@@ -29,7 +29,7 @@ export default function Navigation() {
   }}> Login </Link>;
 
   let signupLink = <Link className="nav-link" to={{
-    pathname: 'signup',
+    pathname: '/signup',
     state: { type: 'registration' }
   }}> Sign Up </Link>;
 
@@ -73,11 +73,11 @@ export default function Navigation() {
           <Home />
         </Route>
 
-        <Route exact path="/login" replace>
+        <Route exact path="/login">
           <AuthPage type={'login'} />
         </Route>
 
-        <Route exact path="/signup" replace>
+        <Route exact path="/signup">
           <AuthPage type={'signup'} />
         </Route>
 
