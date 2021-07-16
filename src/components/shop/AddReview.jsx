@@ -30,7 +30,7 @@ export default function AddReview({ shopId, userId, setShowModal }) {
     setIsSubmitted(true);
     const formData = new FormData();
     formData.append('rating', Number(review.rating));
-    formData.append('user_id', Number(userId));
+    formData.append('user_id', Number(1007));
     formData.append('category', review.category);
     formData.append('summary', review.summary);
     formData.append('description', review.description);
