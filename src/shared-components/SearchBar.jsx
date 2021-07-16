@@ -5,15 +5,17 @@ import { URL } from '../config.js';
 export default function SearchBar({ type, results, setResults, setSearchedShops }) {
   let searchInput = document.getElementById('searchInput');
   let [currentSearch, setCurrentSearch] = useState('city');
-
+  const [query, setQuery] = useState('');
 
   let baseUrl = `http://${URL}/api/`;
 
-
-  const [query, setQuery] = useState('');
+  let capitalize = str => {
+    let changed = str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();
+    return changed;
+  };
 
   const handleSearch = () => {
-    let searchVal = searchInput.value;
+    let searchVal = capitalize(searchInput.value);
     searchInput.value = '';
 
     axios.get(baseUrl + `shops/search?${currentSearch}=${searchVal}`).then(res => {
@@ -23,14 +25,10 @@ export default function SearchBar({ type, results, setResults, setSearchedShops 
 
   };
 
+
   const handleSearchType = () => {
     let newSearch = currentSearch === 'city' ? 'name' : 'city';
     setCurrentSearch(newSearch);
-  };
-
-  let capitalize = str => {
-    let changed = str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();
-    return changed;
   };
 
   return (
