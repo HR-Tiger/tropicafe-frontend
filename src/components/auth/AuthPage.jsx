@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import Login from './Login.jsx';
 import Registration from './Registration.jsx';
@@ -8,7 +8,8 @@ import { endpoints } from '../../lib/endpoints.js';
 import { URL } from '../../config.js';
 
 export default function AuthPage({type}) {
-  const [isLogin, setIsLogin] = useState(type === 'login');
+  const [isLogin, setIsLogin] = useState();
+  useEffect(() => setIsLogin(type === 'login'), [type]);
   let history = useHistory();
 
   let handleLogin = (data) => {
@@ -22,13 +23,13 @@ export default function AuthPage({type}) {
   let postAuth = (data, endpoint) => {
     axios({
       method: 'post',
-      url: `${baseUrl}auth/${endpoint}`,
+      url: `http://${URL}${endpoint}`,
       data: data,
     }).then((res)=> handleLogin(res.data)).catch((err) => console.log('err: ', err));
   };
 
-  let registerFunc = data => postAuth(data, 'register');
-  let loginFunc = data => postAuth(data, 'login');
+  let registerFunc = data => postAuth(data, endpoints.postRegister);
+  let loginFunc = data => postAuth(data, endpoints.postLogin);
 
   let flipCard = () => setIsLogin(!isLogin);
 
