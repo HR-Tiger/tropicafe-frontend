@@ -10,6 +10,15 @@ body, html {
 	height: 100%;
 }
 
+.logoutBtn {
+		background: none;
+		border: none;
+		padding: 0;
+		cursor: pointer;
+
+
+}
+
 /*****************************************************
 ********************* SEARCH BAR ***********
 ******************************************************/
@@ -68,3 +77,16 @@ body, html {
 }
 
 
+.click-stars {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color .2s ease-in;
+	color: black;
+}
+
+.after-click {
+	font-size: 1.5rem;
+	cursor: pointer;
+	transition: color .2s ease-in;
+	color: gold;
+}

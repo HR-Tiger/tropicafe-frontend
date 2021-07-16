@@ -68,7 +68,7 @@
   outline: none;
 }
 
-button {
+.loginBtn {
   font-family: inherit;
   width: 100%;
   font-size: 1em;
@@ -79,7 +79,7 @@ button {
   background: rgba(0, 0, 0, 0.2);
   transition: background 0.2s ease-in-out;
 }
-button:hover {
+.loginBtn:hover {
   background: rgba(0, 0, 0, 0.4);
 }
 
@@ -365,6 +365,13 @@ body, html {
   height: 100%;
 }
 
+.logoutBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
 /*****************************************************
 ********************* SEARCH BAR ***********
 ******************************************************/
@@ -412,4 +419,18 @@ body, html {
 }
 .searchContainer .searchButton:active {
   transform: scale(1);
+}
+
+.click-stars {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease-in;
+  color: black;
+}
+
+.after-click {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease-in;
+  color: gold;
 }
