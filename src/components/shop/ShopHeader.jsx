@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import StarRating from './StarRating.jsx';
 import AddReview from './AddReview.jsx';
+import getCurrentUser from '../../lib/getCurrentUser.js';
 import comingSoon from '../../../dist/coming-soon.jpg';
 
 const style = {
@@ -11,6 +12,7 @@ const style = {
 };
 
 export default function ShopHeader({ shop }) {
+  const [userId, setUserId] = useState();
   const [showModal, setShowModal] = useState(false);
 
   const displayPrice = () => {
@@ -24,6 +26,8 @@ export default function ShopHeader({ shop }) {
       );
     });
   };
+
+  useEffect(() => setUserId(getCurrentUser()), []);
 
   // Just so it isn't 100 characters long
   shop.website = shop.website.slice(0, 20);
@@ -84,7 +88,7 @@ export default function ShopHeader({ shop }) {
         </div>
       </div>
 
-      {showModal && <AddReview shopId={shop.shop_id} setShowModal={setShowModal} />}
+      {showModal && <AddReview shopId={shop.shop_id} userId={userId} setShowModal={setShowModal} />}
 
     </div>
   );

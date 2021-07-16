@@ -22,7 +22,7 @@ export default function AuthPage({type}) {
   let postAuth = (data, endpoint) => {
     axios({
       method: 'post',
-      url: `${baseUrl}auth/${endpoint}`,
+      url: `http://3.239.52.75/api/auth/${endpoint}`,
       data: data,
     }).then((res)=> handleLogin(res.data)).catch((err) => console.log('err: ', err));
   };
