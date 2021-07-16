@@ -8,8 +8,7 @@ export default function FilterReviews({ setReviewList, type, id }) {
   const mapper = [1, 2, 3, 4, 5];
   const defaultOptions = {
     rating: [1, 2, 3, 4, 5],
-    price: [1, 2, 3, 4, 5],
-    category: null
+    category: 'null'
   };
   const [filters, setFilters] = useState(defaultOptions);
 
@@ -22,29 +21,33 @@ export default function FilterReviews({ setReviewList, type, id }) {
   };
 
   const [ratings, setRatings] = useState(setCheckboxes());
-  const [prices, setPrices] = useState(setCheckboxes());
-  const [category, setCategory] = useState(null);
+  // const [prices, setPrices] = useState(setCheckboxes());
+  const [category, setCategory] = useState('null');
 
   const handleCheckboxChange = (e, icon) => {
     let { name } = e.target;
-    icon === 'star' ? (
-      setRatings(prev => ({
-        ...prev,
-        [name]: !prev[name]
-      }))
-    ) : (
-      setPrices(prev => ({
-        ...prev,
-        [name]: !prev[name]
-      }))
-    );
+    setRatings(prev => ({
+      ...prev,
+      [name]: !prev[name]
+    }));
+    // icon === 'star' ? (
+    //   setRatings(prev => ({
+    //     ...prev,
+    //     [name]: !prev[name]
+    //   }))
+    // ) : (
+    //   setPrices(prev => ({
+    //     ...prev,
+    //     [name]: !prev[name]
+    //   }))
+    // );
   };
 
   const handleClear = () => {
     setFilters(defaultOptions);
     setRatings(setCheckboxes());
-    setPrices(setCheckboxes());
-    setCategory(null);
+    // setPrices(setCheckboxes());
+    setCategory('null');
   };
 
   const gatherFilters = filter => (
@@ -56,42 +59,48 @@ export default function FilterReviews({ setReviewList, type, id }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     let rating = gatherFilters(ratings);
-    let price = gatherFilters(prices);
+    // let price = gatherFilters(prices);
 
     if (!rating.length) { rating = defaultOptions.rating; }
-    if (!price.length) { price = defaultOptions.price; }
+    // if (!price.length) { price = defaultOptions.price; }
+    // let newCategory;
+    // console.log(category, category.length);
+    // if (!category.length) {
+    //   console.log('what');
+    //   newCategory = 'null';
+    // } else {
+    //   newCategory = [category];
+    // }
+
 
     setFilters({
       rating,
-      price,
       category
     });
   };
 
   const endpoint = type === 'shop' ? (
-    `shops/${id}/reviews`
+    `/shops/${id}/reviews/filter`
   ) : (
-    `reviews/users/${id}`
+    `/reviews/users/${id}/filter`
   );
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     if (isMounted) {
       // console.log(api + endpoint);
-      // console.log(filters);
-      // axios.get(api + endpoint, filters)
-      //   .then(({ data }) => {
-      //     // console.log(data);
-      //     setReviewList(data);
-      //   })
-      //   .catch(e => console.log(e));
+      console.log(filters);
+      const params = {params: filters};
+      console.log(params);
+      axios.get(api + endpoint, params)
+        .then(({ data }) => {
+          console.log(data);
+          setReviewList(data);
+        })
+        .catch(e => console.log(e));
     }
     if (!isMounted) { setIsMounted(true); }
   }, [filters]);
-  // app.get('/api/reviews/users/:id',
-  // app.get('/api/shops/:id/reviews'
-
-
 
   const createCheckbox = (option, type, icon) => (
     <div className="checkbox" key={option}>
@@ -131,16 +140,16 @@ export default function FilterReviews({ setReviewList, type, id }) {
                 {createCheckboxes(ratings, 'star')}
               </div>
             </li>
-            <li className="list-group-item">
+            {/* <li className="list-group-item">
               <h5 className="card-title">Price</h5>
               <div className="form-check">
                 {createCheckboxes(prices, 'dollar')}
               </div>
-            </li>
+            </li> */}
             <li className="list-group-item">
               <h5 className="card-title">Drink type</h5>
-              <select className="form-select" onChange={(e) => setCategory(e.target.value)}>
-                <option value="">Select a drink</option>
+              <select className="form-select" value={category} onChange={(e) => setCategory([e.target.value])}>
+                <option value="null">Select a drink</option>
                 {categories.map(category => (
                   <option key={category} value={category}>{category}</option>
                 ))}
