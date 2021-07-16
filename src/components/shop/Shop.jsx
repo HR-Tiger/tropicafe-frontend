@@ -2,10 +2,11 @@ import React from 'react';
 import '../../styles/styles.css';
 import StarRating from './StarRating.jsx';
 import { Link } from 'react-router-dom';
+import defaultPhoto from '../../../dist/coming-soon.jpg';
 
 export default function Shop({ shop }) {
 
-  const imageSource = shop.photos ? shop.photos[0].url : 'http://dummyimage.com/250x250.png/5fa2dd/ffffff';
+  const imageSource = shop.photos ? shop.photos[0].url : defaultPhoto;
 
   const priceIcons = () => {
 

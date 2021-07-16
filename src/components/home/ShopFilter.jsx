@@ -100,12 +100,12 @@ export default function ShopFilter() {
       petfriendly: petBoolean,
       price: priceArray
     };
-    console.log(filterBody);
 
 
-    axios.get(`http://${URL}/shops/filter`, filterBody)
-      .then(res => console.log('add shop added', res))
-      .catch(e => console.log('addshop not working', e));
+
+    // axios.get(`http://${URL}/shops/filter`, filterBody)
+    //   .then(res => console.log('add shop added', res))
+    //   .catch(e => console.log('addshop not working', e));
 
   };
 
