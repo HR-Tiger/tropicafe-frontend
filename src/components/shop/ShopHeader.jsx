@@ -42,16 +42,18 @@ export default function ShopHeader({ shop }) {
   return (
     <div className="container mx-auto mt-5">
       <div className="row justify-content-md-center mb-2">
-        <div className="col-md-6">
+        <div className="shopHeader col-md-6">
           <div className="card flex-lg-row mb-4 p-4 box-shadow h-md-250">
             <img
               src={imageURL}
-              className="card-img-left flex-auto d-none d-md-block rounded"
+              className="shopHeaderImg card-img-left flex-auto d-none d-md-block rounded"
               alt={`${shop.name} photo`}
             />
             <div className="card-body d-flex flex-column align-items-start">
               <h1 className="display-3">{shop.name}</h1>
-              <StarRating Rating={shop.avg_rating} />
+              <div className='card-body'>
+                <StarRating Rating={shop.avg_rating} />
+              </div>
               {shop.price && (
                 <div>
                   {displayPrice()}
@@ -66,6 +68,7 @@ export default function ShopHeader({ shop }) {
             </div>
           </div>
         </div>
+
         <div className="col-sm-6">
           <div className="card" style={{width: '24rem'}}>
             <div className="card-body">
