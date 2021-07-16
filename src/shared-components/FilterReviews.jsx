@@ -8,7 +8,7 @@ export default function FilterReviews({ setReviewList, type, id }) {
   const mapper = [1, 2, 3, 4, 5];
   const defaultOptions = {
     rating: [1, 2, 3, 4, 5],
-    category: null
+    category: 'null'
   };
   const [filters, setFilters] = useState(defaultOptions);
 
@@ -22,7 +22,7 @@ export default function FilterReviews({ setReviewList, type, id }) {
 
   const [ratings, setRatings] = useState(setCheckboxes());
   // const [prices, setPrices] = useState(setCheckboxes());
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState('null');
 
   const handleCheckboxChange = (e, icon) => {
     let { name } = e.target;
@@ -47,7 +47,7 @@ export default function FilterReviews({ setReviewList, type, id }) {
     setFilters(defaultOptions);
     setRatings(setCheckboxes());
     // setPrices(setCheckboxes());
-    setCategory(null);
+    setCategory('null');
   };
 
   const gatherFilters = filter => (
@@ -64,11 +64,14 @@ export default function FilterReviews({ setReviewList, type, id }) {
     if (!rating.length) { rating = defaultOptions.rating; }
     // if (!price.length) { price = defaultOptions.price; }
     // let newCategory;
-    // if (category === null) {
-    //   newCategory = null;
+    // console.log(category, category.length);
+    // if (!category.length) {
+    //   console.log('what');
+    //   newCategory = 'null';
     // } else {
     //   newCategory = [category];
     // }
+
 
     setFilters({
       rating,
@@ -77,9 +80,9 @@ export default function FilterReviews({ setReviewList, type, id }) {
   };
 
   const endpoint = type === 'shop' ? (
-    `shops/${id}/reviews/filter`
+    `/shops/${id}/reviews/filter`
   ) : (
-    `reviews/users/${id}/filter`
+    `/reviews/users/${id}/filter`
   );
   const [isMounted, setIsMounted] = useState(false);
 
@@ -89,19 +92,15 @@ export default function FilterReviews({ setReviewList, type, id }) {
       console.log(filters);
       const params = {params: filters};
       console.log(params);
-      axios.get(api + `/shops/${id}/reviews/filter`, params)
+      axios.get(api + endpoint, params)
         .then(({ data }) => {
           console.log(data);
-          // setReviewList(data);
+          setReviewList(data);
         })
         .catch(e => console.log(e));
     }
     if (!isMounted) { setIsMounted(true); }
   }, [filters]);
-  // app.get('/api/reviews/users/:id',
-  // app.get('/api/shops/:id/reviews'
-
-
 
   const createCheckbox = (option, type, icon) => (
     <div className="checkbox" key={option}>
@@ -149,8 +148,8 @@ export default function FilterReviews({ setReviewList, type, id }) {
             </li> */}
             <li className="list-group-item">
               <h5 className="card-title">Drink type</h5>
-              <select className="form-select" onChange={(e) => setCategory([e.target.value])}>
-                <option value="">Select a drink</option>
+              <select className="form-select" value={category} onChange={(e) => setCategory([e.target.value])}>
+                <option value="null">Select a drink</option>
                 {categories.map(category => (
                   <option key={category} value={category}>{category}</option>
                 ))}
